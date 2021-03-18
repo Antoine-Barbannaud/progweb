@@ -1,0 +1,29 @@
+[{
+    "ID": 1,
+    "title": "Quel est votre fruit preferre?",
+    "description": "choisissez votre fruit preferre",
+    "choix": [
+        {
+            "option1": "banane",
+            "option1Compte": 5,
+            "option2": "pomme",
+            "option2Compte": 1,
+            "option3": "fraise",
+            "option3Compte": 0
+        }
+    ]
+},{
+    "ID": 2,
+    "title": "Question 2",
+    "description": "Description 2",
+    "choix": [
+        {
+            "choice1": "france",
+            "choix1Compte": 2,
+            "choice2": "angleterre",
+            "choix2Compte": 10,
+            "choice3": "japon",
+            "choix3Compte": 25
+        }
+    ]
+}]

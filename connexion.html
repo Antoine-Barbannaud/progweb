@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<title> Page Truc </title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script>
+				function connexion() {
+					let user = $("#utilisateur").val();
+					let mdp = $("#mdp").val();
+      				$.ajax({
+      					method: "GET",
+        				dataType: "json",
+        				url: "utilisateur.php",
+        				data: {"user": user, "mdp": mdp }
+        			}).done(function(obj) {
+      					console.log(obj)
+        			}).fail(function(e){
+						console.log(e);
+						$("#message").html("<span class='ko'> Error: problème utilisateur</span>");
+					});
+				}
+			</script>
+	</head>
+	<body>
+		<div>
+			Utilisateur : 
+			<br>
+	  		<input type="text" id="utilisateur" name="utilisateur">
+	  	</div>
+	  	<br>
+	  	<div>
+	  		Mot de passe : 
+	  		<br>
+	  		<input type ="text" id="mdp" name = "mdp">
+	  	</div>
+	  	<br>
+ 	 	<button on click="connexion()">Connexion</button>
+
+	</body>
+</html>
