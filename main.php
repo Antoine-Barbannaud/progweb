@@ -8,22 +8,35 @@
         <?php  
             $FILE_POLLS = "polls.json";
             $FILE_USERS = "users.json";
-
             $stringPoll = file_get_contents($FILE_POLLS);
             $data = json_decode($stringPoll, true);
 
             foreach($data as $i => $id){
-                $ID = $data[$i]['ID'];
                 $title = $data[$i]['title'];
                 $description = $data[$i]['description'];
-                #$choix
 
                 echo "<h3> $title</h3>";
-                echo "<h6> $description </h6>";
-                echo "$ID <br>";
-            }
+                echo "$description: <br>";
 
+                $counter = 0;
+                foreach($data[$i]['choix'] as $j => $choix){
+                    echo "<form action=\"updateVote.php\" method=\"post\">";
+                    echo "- $choix ";
+                    echo "<input type=\"submit\" name=\"".$counter."\" value=\"choisir\"> <br><br>";
+                    echo "</form>";
+                    $counter +=1;
+                }
+            }
         ?>
+
+        <form action="main.php" id="form" method="post">
+            <?php foreach($data[$i]['choix'] as $j => $choix) : ?>
+                <?php echo "- $choix ";?>
+                <input type="submit" name="" value="choisir"> <br><br>
+            <?php endforeach; ?>
+        </form>
+
+
     </body>
 
 
