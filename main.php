@@ -18,26 +18,28 @@
                 echo "<h3> $title</h3>";
                 echo "$description: <br>";
 
-                $counter = 0;
                 foreach($data[$i]['choix'] as $j => $choix){
-                    echo "<form action=\"updateVote.php\" method=\"post\">";
+                    echo "<form action=\"main.php\" method=\"post\">";
+                    echo "<input type=\"hidden\" name=\"key\" value=\"$j\">";
                     echo "- $choix ";
-                    echo "<input type=\"submit\" name=\"".$counter."\" value=\"choisir\"> <br><br>";
+                    echo "<input type=\"submit\" name=\"value\" value=\"Submit\"> <br><br>";
                     echo "</form>";
-                    $counter +=1;
                 }
             }
         ?>
 
-        <form action="main.php" id="form" method="post">
-            <?php foreach($data[$i]['choix'] as $j => $choix) : ?>
-                <?php echo "- $choix ";?>
-                <input type="submit" name="" value="choisir"> <br><br>
-            <?php endforeach; ?>
-        </form>
+        <?php
+        $list = file_get_contents('polls.json');
+        $list = json_decode($list, true);
+        $countElt = count($list);
+        $case = $_POST['key'];
+        $id = 0;
 
+        if(isset($case) && $case <= ($countElt + 1)){
+            $list[$id]['compte'][$case] += 1;
+        }
+        file_put_contents("polls.json", json_encode($list, JSON_PRETTY_PRINT));
+        ?>
 
     </body>
-
-
 </html>

@@ -4,14 +4,14 @@
         "title": "Quel est votre fruit preferre?",
         "description": "Choisissez votre fruit prefere",
         "choix": {
-            "option1": "banane",
-            "option2": "pomme",
-            "option3": "fraise"
+            "1": "banane",
+            "2": "pomme",
+            "3": "fraise"
         },
         "compte": {
-            "oCompte1": 5,
-            "oCompte2": 1,
-            "ocompte3": 0
+            "1": 17,
+            "2": 15,
+            "3": 10
         }
     },
     {
@@ -19,22 +19,22 @@
         "title": "Quelle est votre destination de reve?",
         "description": "Choisissez une destination qui vous fait rever",
         "choix": {
-            "option1": "France",
-            "option2": "Allemagne",
-            "option3": "Japon",
-            "option4": "Italie",
-            "option5": "Etats-Unis",
-            "option6": "Russie",
-            "option7": "Angleterre"
+            "1": "France",
+            "2": "Allemagne",
+            "3": "Japon",
+            "4": "Italie",
+            "5": "Etats-Unis",
+            "6": "Russie",
+            "7": "Angleterre"
         },
         "compte": {
-            "oCompte1": 11,
-            "oCompte2": 23,
-            "ocompte3": 44,
-            "oCompte4": 39,
-            "oCompte5": 1,
-            "ocompte6": 10,
-            "ocompte7": 40
+            "1": 11,
+            "2": 23,
+            "3": 44,
+            "4": 39,
+            "5": 1,
+            "6": 10,
+            "7": 40
         }
     }
 ]
