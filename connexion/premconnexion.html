@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>connexion</title>
+  <link rel="stylesheet" href="styles.css" media="screen" type="text/css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+  	function ajoutUser(mdp){
+  		let username = $("#utilisateur").val();
+  			$.ajax({
+            method: "GET",
+            dataType: "",
+            url: "ajoututilisateur.php",
+            data: {"username": username, "mdp": mdp}
+            }).done(function(obj) {
+            	if(obj == "yes"){
+            		window.location.href = 'connexion.html';	
+              //console.log(obj)
+             //console.log("coucou")
+            	}
+            }).fail(function(e){
+            console.log(e);
+            $("#message").html("<span class='ko'> Error: problème utilisateur</span>");
+            }); 
+  	}
+
+
+  	function TestMdp(){
+      let mdp1 = $("#mdp1").val();
+      let mdp2 = $("#mdp2").val();
+      if(mdp1 == mdp2){
+      	ajoutUser(mdp1);
+      }
+      else {
+      	$("#wrongPwd").show();
+      }
+    }
+
+
+
+  </script>
+  <body>
+	<div id="container">
+		<!-- zone de connexion -->
+          <h1>Inscription</h1>
+          <label><b>Entrez votre nom d'utilisateur</b></label>
+          <input type="text" placeholder="Entrer le nom d'utilisateur" id="utilisateur"  name="truc" required>
+          <label><b>Entrez votre mot de passe</b></label>
+          <input type="password" placeholder="Entrer le mot de passe" id="mdp1"  name="password" required>
+          <label><b>Verifiez votre mot de passe</b></label>
+          <input type="password" placeholder="Entrer le mot de passe" id="mdp2" onchange="TestMdp()" name="password" required>
+          <div id="wrongPwd" style="display: none;">
+			mots de passe différents,veuillez réessayez. 
+		  </div>
+          <button on click="">Allez à la page de connexion</button>
+   </div>
+</body>
+</html>
