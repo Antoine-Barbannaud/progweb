@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <title>Vote en ligne</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="css/styles.css">
         <script>
             if ( window.history.replaceState ) {
                 window.history.replaceState( null, null, window.location.href );
@@ -17,8 +17,8 @@
             <table>
                 <tbody>
                     <tr>
-                        <td style="text-align:left;vertical-align:top">
-                            <img class="logo" height="128" src="images/logoUnivPS.png" alt="hexagon logo"><br><br>
+                        <td style="vertical-align:top">
+                            <img class="logo" src="images/logoUnivPS.png" alt="logoUPSaclay"><br><br>
 
                             <button class="btnsOption" onclick="createBallot()">Créer un scrutin</button> <br><br>
                             <button class="btnsOption" onclick="sendInvitations()" disabled="">Invite les votants</button> <br><br>
@@ -35,7 +35,7 @@
                                         <!-- En tete de la page -->
                                         <tr>
                                             <td>
-                                                <h1> Vote en ligne<br><small>Creer un scrutin</small></h1>
+                                                <h1> Creer un vote</h1>
                                             </td>
                                         </tr>
                                     
@@ -87,23 +87,19 @@
                                             <td>
                                                 <span id="voterCount">1</span> Voteurs
                                                 <div>
-                                                    <span id="labele">Names</span>
-                                                    
-                                                    <div style="display:inline-block;width:260px"></div>
-                                                    <span>Procuration</span>
+                                                    Adresses
+                                                    <div style="display: inline-block; width: 80px"></div>
+                                                    Procuration
                                                 </div>
 
                                                 <div>
-                                                    <input class="voter" type="text" size="32" value="antoine.barbannaud" readonly="">
-                                                    <span class="miniat">@universite-paris-saclay.fr</span>
-                                                    <input onchange="updVoters()" type="checkbox" class="proxy1">
-                                                    <input onchange="updVoters()" type="checkbox" class="proxy2">
+                                                    <input class="voters" value="antoine.barbannaud" readonly="">
+                                                    <input onchange="addProcuration()" type="checkbox" class="procuration">
                                                     <button onclick="removeVoter(this.parentNode)">-</button>
                                                 </div>
                                                 <div>
-                                                    <input id="newvoter" size="32" onkeyup="checkMail(this)" type="text">
-                                                    <span class="miniat">@universite-paris-saclay.fr</span>
-                                                    <button style="width:58px" onclick="addVoter(this.parentNode)">+</button>
+                                                    <input id="newvoter">
+                                                    <button onclick="addVoter(this.parentNode)">+</button>
                                                 </div>
                                                 <br>
                                             </td>
@@ -111,8 +107,8 @@
 
                                         <!-- Resultats -->
                                         <tr>
-                                            <td colspan="2" id="results">
-                                            <span id="msgcreategen">...</span>
+                                            <td>
+                                                <span id="result"></span>
                                             </td>
                                         </tr>
 
@@ -126,53 +122,45 @@
         </div>
         <div class="mainPage" id="votingPage" style="display: none;">
             <table>
-                <tbody><tr id="msg2header">
-                <td rowspan="4" style="text-align:right;vertical-align:top">
-                    <a href="."><img class="logo" height="128" src="images/Logo3.png" alt="hexagon logo"></a>
-                </td>
-                <td rowspan="4">
-                     
-                </td>
-                <td colspan="1">
-                    <h1> Ballotin.org <small>v2.01</small><br><small id="votetitle">Let's vote</small> </h1>
-                </td>
-                <td rowspan="4" style="text-align:right;vertical-align:top">
-                    <a target="_blank" href="https://www.universite-paris-saclay.fr/"><img class="logo corplogo" src="images/Saclay-logo-rondTB.png" alt="UPSaclay logo"></a>
-                </td>
+                <tbody>
+                    <!-- Header-->
+                    <tr>
+                        <td rowspan="4" style="vertical-align:top">
+                            <img class="logo" height="128" src="images/logoUnivPS.png" alt="logoUPSaclay">
+                        </td>
+                        <td> 
+                            <h1> Page de vote </h1>
+                        </td>
+                    </tr>
 
-                </tr>
-                <tr><td rowspan="1">
-                    <span id="labelg">Voter</span> : <br>
-                    <input spellcheck="false" size="30" id="voterid" onkeyup="checkMail(this)" readonly=""><span class="miniat">@universite-paris-saclay.fr</span> <input type="password" size="18" id="voterpasswd" readonly=""><br><br><br>
-                    <span id="labelh">Ballot code</span> :
-                    <input spellcheck="false" size="9" id="ballotid" readonly="">   <br> <br>
-                    <span id="labeli">Question</span> :<br>
-                    <textarea rows="5" cols="50" id="questionid" readonly=""></textarea>   <br>
-                    <br>
-                </td>
-                </tr>
-                <tr>
-                <td>
-                    <span id="labelj">Choose your option then click Vote !</span> <br>
-                    <div class="box" style="width:100%">
-                    <div class="content">
-                        <br>
-                        <!--select id="optvote" onchange="updateOptVote(this)">
-                        </select-->
-                        <div id="rbvote"><label><input type="radio" onchange="updateRBVote()" name="persvote" value="Abstention" <="" input="">Abstention</label><br><label><input type="radio" onchange="updateRBVote()" name="persvote" value="No/Non" <="" input="">No/Non</label><br><label><input type="radio" onchange="updateRBVote()" name="persvote" value="Yes/Oui" <="" input="">Yes/Oui</label><br></div><br><br>
-                        <button id="push" onclick="pushVote()" disabled="">Vote </button>
-                        <button style="display: inline-block;" id="checkres" onclick="checkResults()">check results </button>
-                        <button id="closevote" onclick="closeVote()" style="display: inline-block;">Leave</button><br><br>
-                    </div>
-                    </div>
-                </td>
-                </tr>
-                <tr>
-                <td>
-                    <div id="msgvoting"><span><b>Results:</b></span><br><span class="vote">-2</span></div>
-                </td>
-                </tr>
+                    <!-- Voteur-->
+                    <tr>
+                        <td rowspan="1">
+                            Voteur:
+                            <div style="display: inline-block; width: 120px"></div>
+                            Code du vote<br>
+                            <input id="voterID" value="antoine.barbannaud@universite-paris-saclay.fr" readonly=""> 
+                            <input id="voteCode" value="sD8dI" readonly="">
+                            <br><br>
+                            Question:<br>
+                            <textarea id="questionID" rows="3" cols="30" readonly=""></textarea>   <br>
+                            <br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Choisis ton option puis clique sur vote !<br>
+                            <br>
+                            <div id="OptionList">
+                                <input type="radio" name="persvote" value="Abstention">Abstention</input> <br>
+                                <input type="radio" name="persvote" value="No/Non">No/Non</input> <br>
+                                <input type="radio" name="persvote" value="Yes/Oui">Yes/Oui</input> <br>
+                            </div>
 
+                            <br><br>
+                            <button id="voter" onclick="submitVote()" disabled="">Voter</button>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>
