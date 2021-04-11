@@ -1,49 +1,41 @@
 <!doctype html>
 <html lang="fr">
-<head>
-  <meta charset="utf-8">
-  <title>connexion</title>
-  <link rel="stylesheet" href="styles.css" media="screen" type="text/css" />
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script>
-  	function connexion(){
-      let username = $("#utilisateur").val();
-      let mdp = $("#mdp").val();
-      //console.log(username);
-      //console.log(mdp);
-		 $.ajax({
-            method: "GET",
-            dataType: "",
-            url: "verification.php",
-            data: {"username": username, "mdp": mdp }
-            }).done(function(obj) {
-            	if(obj == "yes"){
-            		window.location.href = 'principale.php';	
-              //console.log(obj)
-             //console.log("coucou")
-            	}
-            }).fail(function(e){
-            console.log(e);
-            $("#message").html("<span class='ko'> Error: problème utilisateur</span>");
-            }); 
-    }
+	<head>
+		<meta charset="utf-8">
+		<title>connexion</title>
+		<link rel="stylesheet" href="styles.css" media="screen" type="text/css" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="verifConnexion.js"></script>
+	</head>
 
-
-  </script>
-
-
-</head>
-<body>
-	<div id="container">
-		<!-- zone de connexion -->
-          <h1>Connexion</h1>
-          <label><b>Nom d'utilisateur</b></label>
-          <input type="text" placeholder="Entrer le nom d'utilisateur" id="utilisateur"  name="truc" required>
-          <label><b>Mot de passe</b></label>
-          <input type="password" placeholder="Entrer le mot de passe" id="mdp" onchange="connexion()"  name="password" required>
-          <button on click=""Connexion()>Connexion</button>
-   </div>
-</body>
+	<body>
+		<div id="container">
+			<div id="login" style="display: block">
+				<p class="header" align="center">Connexion</p>
+				<input type="text" placeholder="Nom d'utilisateur" id="utilisateur"  name="truc" required>
+				<input type="password" placeholder="Mot de passe" id="mdp" onchange="connexion()"  name="password" required>
+				<button class="submit" onclick="connexion()">Se connecter</button> <br> <br> <br>
+				<div id="erreur" style="display: none;">
+					<p class="incorrectLogin">Nom d'utilisateur ou mot de passe incorrect!</p>
+				</div>
+				<button class="register" onclick="launchInscription()">S'inscrire</button>
+			</div>
+			<div id="inscription" style="display: none">
+				<p class="header" align="center">Inscription</p>
+				<input type="text" placeholder="Nom d'utilisateur" id="utilisateur" onchange="TestUtilisateur()" name="truc" required>
+				<input type="password" placeholder="Mot de passe" id="mdp1"  name="password" required>
+				<input type="password" placeholder="Verifiez le mot de passe" id="mdp2" onchange="TestMdp()" name="password" required>
+				<div id="wrongPwd" style="display: none;">
+					<p class="incorrectLogin">Nom d'utilisateur ou mot de passe incorrect!</p>
+				</div>
+				<div id="duplicatedUsername" style="display: none;">
+					<p class="incorrectLogin">Nom d'utilisateur déjà utilisé!</p>
+				</div>
+				<button class="submit" onclick="">S'inscrire</button>
+	
+			</div>
+		</div>
+	</body>
 </html>
 
 

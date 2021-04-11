@@ -1,19 +1,16 @@
 <?php
+	$username = htmlspecialchars($_GET["username"]);
+	$mdp = htmlspecialchars($_GET["mdp"]);
+	$jsonString = file_get_contents('mdp.json');
+	$data = json_decode($jsonString, true);
 
-$username = htmlspecialchars($_GET["username"]);
-$mdp = htmlspecialchars($_GET["mdp"]);
-$jsonString = file_get_contents('mdp.json');
-$data = json_decode($jsonString, true);
 
+	//print("$username");
 
-//print("$username");
-
-foreach ($data as $i => $truc) {
-	if(strpos($truc["mail"], $username) !== FALSE and strpos($truc["mdp"], $mdp) !== FALSE){
-		 print("yes");
-    }
-    
-}
-
+	foreach ($data as $i => $truc) {
+		if ($truc["mail"] === $username && $truc["mdp"] === $mdp){
+			print("yes");
+		}	
+	}
 
 ?>
