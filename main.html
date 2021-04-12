@@ -4,24 +4,29 @@
         <meta charset="utf-8">
         <title>Vote en ligne</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script type="text/javascript" src="vote.js" ></script>
         <link rel="stylesheet" href="mainPage.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
         <script>
             if ( window.history.replaceState ) {
-                window.history.replaceState( null, null, window.location.href );
+                 window.history.replaceState( null, null, window.location.href );
             }
+
         </script>
     </head>
-    <body>
+     <body> 
         <div id="container">
-            <div class="mainPage" id="createVote" style="display: block;">
+            <div class="mainPage" id="createVote"  style="display: block;">
                 <p class="header">Creer un vote</p>
                 
                 <form onsubmit="return validatePoll()">
                     <p class="subHeader">Organisateur:</p>
                     <input type="text" id="owner" readonly=""> 
                     <br>
+                    <div id="test22" style="display:none;">
+                    <p>tic!</p>
+                     </div>
 
                     <p class="subHeader">Question:</p><br>
                     <textarea id="question" rows="3" cols="60">Etes vous d'accord que...</textarea>
