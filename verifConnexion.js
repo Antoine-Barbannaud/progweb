@@ -12,7 +12,7 @@ function connexion(){
     let mdp = $("#mdp").val();
         $.ajax({
         method: "GET",
-        url: "verification.php",
+        url: "php/verification.php",
         data: {"username": username, "mdp": mdp }
         }).done(function(obj) {
             console.log(obj);
@@ -37,7 +37,7 @@ function ajoutUser(mdp){
         $.ajax({
         method: "GET",
         dataType: "",
-        url: "ajoututilisateur.php",
+        url: "php/ajoututilisateur.php",
         data: {"username": username, "mdp": mdp}
         }).done(function(obj) {
             console.log(obj);
@@ -57,7 +57,7 @@ function TestUtilisateur(){
     $.ajax({
           method: "GET",
           dataType: "",
-          url: "nom.php",
+          url: "php/nom.php",
           data: {"username": username}
           }).done(function(obj) {
             if(obj == "incorrect"){
@@ -103,7 +103,7 @@ function launchInscription(){
 function createVote(){
     window.location.href = 'main.html';    
     console.log(user);
-    $("#owner").val("Glenn Quagmire");
+    document.getElementById("owner").value = "trucmuche"; //set value on myInputID
 
 }
 
