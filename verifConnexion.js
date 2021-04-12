@@ -15,7 +15,7 @@ function connexion(){
         url: "php/verification.php",
         data: {"username": username, "mdp": mdp }
         }).done(function(obj) {
-            console.log(obj);
+            //console.log(obj);
             if(obj == "yes"){
                 $("#login").hide();
                 $("#userHome").show();
@@ -40,7 +40,7 @@ function ajoutUser(mdp){
         url: "php/ajoututilisateur.php",
         data: {"username": username, "mdp": mdp}
         }).done(function(obj) {
-            console.log(obj);
+            //console.log(obj);
             if(obj == "yes"){
                 window.location.href = 'connexion.html';    
             }
@@ -84,7 +84,7 @@ function TestMdp(){
         ajoutUser(mdp1);
     }
    else if(test == "no") {
-        console.log(test);
+        //console.log(test);
         $("#wrongPwd").hide();
     }
     else {
@@ -101,9 +101,8 @@ function launchInscription(){
 
 
 function createVote(){
-    window.location.href = 'main.html';    
-    console.log(user);
-    document.getElementById("owner").value = "trucmuche"; //set value on myInputID
-
+    window.location.href = 'main.html';  
+    sessionStorage.setItem("username",user)  
+   //document.getElementById("owner").value = "trucmuche"; //set value on myInputID
 }
 
