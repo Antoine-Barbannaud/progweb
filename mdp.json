@@ -1,0 +1,17 @@
+[
+	{
+		"mail": "charlotte.trupin@universite-paris-saclay.fr",
+	    "mdp" : "test"
+	},
+	{
+		"mail" : "blablabla",
+		"mdp" : "truc"
+
+	}
+,{
+    "mail": "nico",
+    "mdp": "tic"
+},{
+    "mail": "alicia",
+    "mdp": "tac"
+}]
