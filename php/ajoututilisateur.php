@@ -2,7 +2,7 @@
 
 $username = htmlspecialchars($_GET["username"]);
 $mdp = htmlspecialchars($_GET["mdp"]);
-$jsonString = "mdp.json";
+$jsonString = "../json/mdp.json";
 $result = array(
 		"mail" => $username,
 		"mdp" => $mdp
