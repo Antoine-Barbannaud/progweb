@@ -11,3 +11,34 @@ window.onload = function () {
 	document.getElementById("owner").value = user;
 }
 
+
+function removeOption(Node){
+    Node.parentNode.removeChild(Node);
+}
+
+ function modifyOption(Node){
+    $("button").each(function(){
+        $(this).html("add");
+    });
+    
+}
+
+function addOption(Node){
+    const div = document.createElement('div');
+    div.className = '1';
+    div.innerHTML = `
+        <input type="text" size="55" class="1" value="">
+        <button onclick="removeOption(this.parentNode)">suppr</button>
+    `;
+    Node.parentNode.appendChild(div);
+}
+
+function validate(){
+    $("input").each(function(index, value){
+        console.log($(value).val());
+    });
+}
+
+function hide(){ 
+    $('#myID').toggle();
+}
