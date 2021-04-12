@@ -4,6 +4,7 @@ script.type = 'text/javascript';
 document.getElementsByTagName('head')[0].appendChild(script);
 
 let coOk = "no";
+let test = "ok"
 
 function connexion(){
     let username = $("#utilisateur").val();
@@ -15,6 +16,7 @@ function connexion(){
         url: "verification.php",
         data: {"username": username, "mdp": mdp }
         }).done(function(obj) {
+            console.log(obj);
             if(obj == "yes"){
                 window.location.href = 'principale.php';	
             }
@@ -28,17 +30,17 @@ function connexion(){
 }
 
 function ajoutUser(mdp){
-    let username = $("#utilisateur").val();
+    let username = $("#user").val();
+   // console.log(username);
         $.ajax({
         method: "GET",
         dataType: "",
         url: "ajoututilisateur.php",
         data: {"username": username, "mdp": mdp}
         }).done(function(obj) {
+            console.log(obj);
             if(obj == "yes"){
                 window.location.href = 'connexion.html';	
-        //console.log(obj)
-        //console.log("coucou")
             }
         }).fail(function(e){
             console.log(e);
@@ -46,6 +48,7 @@ function ajoutUser(mdp){
         }); 
 }
  
+
 function TestUtilisateur(){
     let username = $("#user").val();
     console.log(username);
@@ -57,10 +60,12 @@ function TestUtilisateur(){
           }).done(function(obj) {
             if(obj == "incorrect"){
               $("#duplicatedUsername").show();
+              test = "no";
             }
             else{
                 $("#duplicatedUsername").hide();
                 coOk = "yes";
+                test = "ok";
             }
 
           }).fail(function(e){
@@ -70,13 +75,19 @@ function TestUtilisateur(){
   }
 
 function TestMdp(){
+    console.log("ici");
     let mdp1 = $("#mdp1").val();
     let mdp2 = $("#mdp2").val();
     if(mdp1 == mdp2 && coOk == "yes"){
         ajoutUser(mdp1);
     }
+   else if(test == "no") {
+        console.log(test);
+        $("#wrongPwd").hide();
+    }
     else {
-        $("#wrongPwd").show();
+        console.log(test);
+         $("#wrongPwd").show();
     }
 }
 
