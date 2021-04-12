@@ -12,12 +12,9 @@ body {
 	background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%), linear-gradient(to bottom,  rgba(57,173,219,.25) 0%,rgba(42,60,87,.4) 100%), linear-gradient(135deg,  #670d10 0%,#092756 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3E1D6D', endColorstr='#092756',GradientType=1 );
     font-family: 'Ubuntu', sans-serif;
-    
 }
 #container{
-    background-color: #FFFFFF;
-    width: 400px;
-    height: 420px;
+    background-color: white;
     margin: 7em auto;
     border-radius: 1.2em;
     box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.54);
@@ -27,19 +24,68 @@ body {
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
+#container>#login, #container>#inscription{
+    width: 400px;
+    height: 420px;
+}
+#container>#userHome{
+    width:700px;
+    height:400px;
+    transform:scale(1.2);
+}
 .header {
     align-content: center;
     color: #6b7e8d;
-    font-family: 'Ubuntu', sans-serif;
     font-weight: bold;
     font-size: 30px;
     padding-top: 30px;
     margin-bottom: 50px;
 }
 
+.subHeader {
+    text-align: left;
+    color: #6b7e8d;
+    font-weight: bold;
+    font-size: 20px;
+
+    padding-left:3rem;
+    margin-top:90px;
+}
+
+
+#dispBallotVote.subHeader{
+    margin-left:80px;
+}
+#dispBallotManage.subHeader{
+    margin-left:100px;
+}
+/**/
+#subHeaderPos{
+    margin-bottom:-30px;
+    margin-top:100px;
+}
+
+#wrapper{
+    display:flex;
+}
+#ballotListContainer{
+    margin-top:9%;
+    flex: 0 0 43%;
+    margin-right:155px;
+    overflow:auto;
+    height:200px;
+}
+#ballotManageContainer{
+    margin-top:9%;
+    margin-left:-22px;
+    margin-right:110px;
+    flex: 1;
+    overflow:auto;
+    height:200px;
+}
+
 input[type=text], input[type=password] {
     width: 76%;
-    font-family: 'Ubuntu', sans-serif;
     background: rgb(236, 236, 236);
     color: rgb(133, 133, 133) !important;
     font-weight: 300;
@@ -58,10 +104,9 @@ input[type=text], input[type=password] {
     
 }
 
-.submit {
+.submit{
     cursor: pointer;
     color: #fff;
-    font-family: 'Ubuntu', sans-serif;
     font-size: 13px;
     border: 0;
     border-radius: 5em;
@@ -86,13 +131,15 @@ input[type=text], input[type=password] {
     color:rgb(255, 255, 255);
     background:linear-gradient(#3976d8,#3a7ab6);
 }
+#userHome>.submit{
+    margin-top: 110px;
+}
 
 .register {
     background:none;
     border:none;
     cursor: pointer;
     font-size: 13px;
-    font-family: 'Ubuntu', sans-serif;
     color: rgb(81, 121, 195);
     text-decoration: underline;
     padding:0!important;
@@ -107,6 +154,29 @@ input[type=text], input[type=password] {
     color: rgb(131, 169, 240);
 }
 
+.btn-vote-ID, .btn-manage-vote-ID{
+    cursor: pointer;
+    color: #fff;
+    font-size: 16px;
+    border: 0;
+    border-radius: .5em;
+    background-color: #b8476f;
+
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    margin-top: 10px;
+    margin-left: 145px;
+    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+}
+.btn-vote-ID:hover, .btn-manage-vote-ID:hover{
+    background-color: #A84165;
+}
+.btn-manage-vote-ID{
+    margin-left: 0px;
+}
+
 .incorrectLogin {
     position:absolute;
     top:50%;
@@ -115,16 +185,24 @@ input[type=text], input[type=password] {
     transform: translate(-50%, -50%);
     margin-top:70px;
     color: #e0337b;
-    font-family: 'Ubuntu', sans-serif;
     font-weight: bold;
     font-size: 12px;
     text-align: center;
 }
-
 #wrongPwd>.incorrectLogin{
     margin-top:110px;
 }
-
 #duplicatedUsername>.incorrectLogin{
     margin-top:110px;
 }
+
+.vl {
+    border-left: 2px solid #e9e9e9;
+    height: 200px;
+    position: absolute;
+    margin-top:60px;
+    left: 50%;
+    margin-left: 0px;
+    top: 0;
+  }
+

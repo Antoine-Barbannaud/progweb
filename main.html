@@ -5,6 +5,8 @@
         <title>Vote en ligne</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <link rel="stylesheet" href="mainPage.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
         <script>
             if ( window.history.replaceState ) {
                 window.history.replaceState( null, null, window.location.href );
@@ -14,154 +16,100 @@
     <body>
         <div id="container">
             <div class="mainPage" id="createVote" style="display: block;">
-                <table>
-                    <tbody>
-                        <tr>
-                            <td style="vertical-align:top">
+                <p class="header">Creer un vote</p>
+                
+                <form onsubmit="return validatePoll()">
+                    <p class="subHeader">Organisateur:</p>
+                    <input type="text" id="owner" readonly=""> 
+                    <br>
 
-                                <button class="btnsOption" onclick="createBallot()">Créer un scrutin</button> <br><br>
-                                <button class="btnsOption" onclick="sendInvitations()" disabled="">Invite les votants</button> <br><br>
-                                <button class="btnsOption" onclick="voteMyself()" disabled="">Voter soi-même</button> <br><br>
-                                <button class="btnsOption" onclick="updateBallot()" disabled="">Voir statistiques du scrutin</button> <br><br>
-                                <button class="btnsOption" onclick="closeBallot()" disabled="">Fermer le scrutin</button> <br><br>
-                                <button class="btnsOption" onclick="destroyBallot()" disabled="">Supprimer le scrutin</button> <br><br>
-                                <button class="btnsOption" onclick="exitCreateBallot()">Fermer</button> <br><br>
-                            </td>
-                            <td>
-                                <form onsubmit="return validatePoll()">
-                                    <table>
-                                        <tbody>
-                                            <!-- En tete de la page -->
-                                            <tr>
-                                                <td>
-                                                    <p class="header">Creer un vote</p>
-                                                </td>
-                                            </tr>
-                                        
-                                            <!-- Description -->
-                                            <tr>
-                                                <td>
-                                                    <span id="prntOwnr">Organisateur:</span>
-                                                    <br>
-                                                    <input size="36" type="text" id="owner" readonly=""> 
-                                                    <br><br>
-                                                </td>
-                                            </tr>
+                    <p class="subHeader">Question:</p><br>
+                    <textarea id="question" rows="3" cols="60">Etes vous d'accord que...</textarea>
+                    <br><br>
 
-                                            <!-- Question -->
-                                            <tr>
-                                                <td>
-                                                    <span id="prntQuestion">Question:</span>
-                                                    <br>
-                                                    <textarea id="question" rows="3" cols="60">Etes vous d'accord que...</textarea>
-                                                    <br><br>
-                                                </td>
-                                            </tr>
+                    <p class="subHeader" id="dispOption">Options:</p><br>
+                    <div class="optionsListContainer">
+                        <div>
+                            <input type="text" class="voteOption" value="Yes" readOnly="">
+                            <button onclick="removeOption(this.parentNode)">-</button>
+                        </div>
+                        <div>
+                            <input type="text" class="voteOption" value="No" readOnly="">
+                            <button onclick="removeOption(this.parentNode)">-</button>
+                        </div>
+                        <div>
+                            <input type="text" class="voteOption" value="Abstention" readOnly="">
+                            <button onclick="removeOption(this.parentNode)">-</button>
+                        </div>
+                        <div>
+                            <input type="text" id="addOption" class="voteOption" value="">
+                            <button onclick="addOption(this.parentNode)">+</button>
+                        </div>
+                    </div>
+                    
 
-                                            <!-- Choix -->
-                                            <tr>
-                                                <td>
-                                                    <span id="prntOptions">Options: </span><br>
-                                                    <div>
-                                                        <input type="text" size="55" class="voteOption" value="Yes" readOnly="">
-                                                        <button onclick="removeOption(this.parentNode)">-</button>
-                                                    </div>
-                                                    <div>
-                                                        <input type="text" size="55" class="voteOption" value="No" readOnly="">
-                                                        <button onclick="removeOption(this.parentNode)">-</button>
-                                                    </div>
-                                                    <div>
-                                                        <input type="text" size="55" class="voteOption" value="Abstention" readOnly="">
-                                                        <button onclick="removeOption(this.parentNode)">-</button>
-                                                    </div>
-                                                    <div>
-                                                        <input type="text" size="55" id="addOption" value="">
-                                                        <button onclick="addOption(this.parentNode)">+</button>
-                                                    </div><br>
-                                                </td>
-                                            </tr>
-                                            
-                                            <!-- Voteurs -->
-                                            <tr>
-                                                <td>
-                                                    <span id="voterCount">1</span> Voteurs
-                                                    <div>
-                                                        Adresses
-                                                        <div style="display: inline-block; width: 80px"></div>
-                                                        Procuration
-                                                    </div>
+                    <p class="subHeader" id="dispVoters"><span id="voterCount">1</span> Voteurs</p>
+                    <div>
+                        <span id="dispAdresse" class="caption">Adresses</span>
+                        <span id="dispProcuration" class="caption">Procuration</span>
+                    </div>
+    
+                    <div class="votersListContainer">
+                        <div>
+                            <input class="voters" value="antoine.barbannaud" readonly="">
+                            <input onchange="addProcuration()" type="checkbox" class="procuration">
+                            <button onclick="removeVoter(this.parentNode)">-</button>
+                        </div>
+                        
 
-                                                    <div>
-                                                        <input class="voters" value="antoine.barbannaud" readonly="">
-                                                        <input onchange="addProcuration()" type="checkbox" class="procuration">
-                                                        <button onclick="removeVoter(this.parentNode)">-</button>
-                                                    </div>
-                                                    <div>
-                                                        <input id="newvoter">
-                                                        <button onclick="addVoter(this.parentNode)">+</button>
-                                                    </div>
-                                                    <br>
-                                                </td>
-                                            </tr>
+                        <div>
+                            <input class="voters" id="newvoter">
+                            <button onclick="addVoter(this.parentNode)">+</button>
+                        </div>
+                    </div>
+                </form>
+                
+       
+                <button class="submit" onclick="createBallot()">Créer le scrutin</button>
+                <br>
+                <div class="toolsContainer">
+                    <button class="btn-tools" onclick="voteMyself()" disabled="">Voter soi-même</button>
+                    <button class="btn-tools" onclick="updateBallot()" disabled="">Voir statistiques du scrutin</button>
+                    <button class="btn-tools" onclick="closeBallot()" disabled="">Fermer le scrutin</button>
+                    <button class="btn-tools" onclick="destroyBallot()" disabled="">Supprimer le scrutin</button>
+                    
+                </div>
+                <br>
+                <button class="exit" onclick="exitCreateBallot()">Fermer</button>
 
-                                            <!-- Resultats -->
-                                            <tr>
-                                                <td>
-                                                    <span id="result"></span>
-                                                </td>
-                                            </tr>
-
-                                        </tbody>
-                                    </table>
-                                </form>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
             </div>
+
             <div class="mainPage" id="votingPage" style="display: none;">
-                <table>
-                    <tbody>
-                        <!-- Header-->
-                        <tr>
-                            <td> 
-                                <h1> Page de vote </h1>
-                            </td>
-                        </tr>
+                <p class="header"> Page de vote </p>
 
-                        <!-- Voteur-->
-                        <tr>
-                            <td rowspan="1">
-                                Voteur:
-                                <div style="display: inline-block; width: 120px"></div>
-                                Code du vote<br>
-                                <input id="voterID" value="antoine.barbannaud@universite-paris-saclay.fr" readonly=""> 
-                                <input id="voteCode" value="sD8dI" readonly="">
-                                <br><br>
-                                Question:<br>
-                                <textarea id="questionID" rows="3" cols="30" readonly=""></textarea>   <br>
-                                <br>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Choisis ton option puis clique sur vote !<br>
-                                <br>
-                                <div id="OptionList">
-                                    <input type="radio" name="persvote" value="Abstention">Abstention</input> <br>
-                                    <input type="radio" name="persvote" value="No/Non">No/Non</input> <br>
-                                    <input type="radio" name="persvote" value="Yes/Oui">Yes/Oui</input> <br>
-                                </div>
+                <span class="subHeader">Voteur:</span>
+                <div style="display:inline-block; width:180px;"></div>
+                <span class="subHeader">Code du vote:</span>
+                <br>
+                <input id="voterID" value="antoine.barbannaud@universite-paris-saclay.fr" readonly=""> 
+                <input id="voteCode" value="sD8dI" readonly="">
 
-                                <br><br>
-                                <button id="voter" onclick="submitVote()" disabled="">Voter</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <p class="subHeader">Question:</p> <br>
+                <textarea id="questionID" readonly="">Pensez vous que...</textarea>
+               
+                <div id="chooseVoteContainer">
+                    <p class="subHeader">Choisis ton option puis clique sur vote !</p>
+                    <div id="OptionList">
+                        <input type="radio" name="persvote" value="Abstention">Abstention</input> <br>
+                        <input type="radio" name="persvote" value="No/Non">No/Non</input> <br>
+                        <input type="radio" name="persvote" value="Yes/Oui">Yes/Oui</input> <br>
+                    </div>
+                </div>
+                
+                <button class="submit" id="voter" onclick="submitVote()" disabled="">Voter</button> 
+                <button class="exit" onclick="exitCreateBallot()">Fermer</button>
             </div>
         </div>
-        
         
     </body>
 </html>

@@ -6,11 +6,13 @@
 		<link rel="stylesheet" href="styles.css" media="screen" type="text/css" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<script src="verifConnexion.js"></script>
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
 	</head>
 
 	<body>
 		<div id="container">
-			<div id="login" style="display: block">
+			<div id="login" style="display: none">
 				<p class="header" align="center">Connexion</p>
 				<input type="text" placeholder="Nom d'utilisateur" id="utilisateur"  name="truc" required>
 				<input type="password" placeholder="Mot de passe" id="mdp" onchange="connexion()"  name="password" required>
@@ -33,6 +35,30 @@
 				</div>
 				<button class="submit" onclick="">S'inscrire</button>
 	
+			</div>
+			<div id="userHome" style="display:block">
+				<div id="subHeaderPos">
+					<span class="subHeader" id="dispBallotVote">Votes disponibles</span>
+					<span class="subHeader" id="dispBallotManage">Votes a Gérer</span>
+				</div>
+				<div id="wrapper">
+					<div id="ballotListContainer">
+						<button class="btn-vote-ID" onclick="launchVoteFromHome()">12989</button> <br>
+						<button class="btn-vote-ID" onclick="launchVoteFromHome()">21123</button> <br>
+						<button class="btn-vote-ID" onclick="launchVoteFromHome()">54389</button> <br>
+						<button class="btn-vote-ID" onclick="launchVoteFromHome()">12334</button> <br>
+						<button class="btn-vote-ID" onclick="launchVoteFromHome()">67983</button> <br>
+					</div>
+					<div class="vl"></div>
+					<div id="ballotManageContainer">
+						<button class="btn-manage-vote-ID" onclick="manageVoteFromHome()">94872</button> <br>
+						<button class="btn-manage-vote-ID" onclick="manageVoteFromHome()">48899</button> <br>
+						<button class="btn-manage-vote-ID" onclick="manageVoteFromHome()">12096</button> <br>
+						<button class="btn-manage-vote-ID" onclick="manageVoteFromHome()">98273</button> <br>
+						<button class="btn-manage-vote-ID" onclick="manageVoteFromHome()">32495</button> <br>
+					</div>
+				</div>
+				<button class="submit" onclick="createVote()">Créer un vote</button>
 			</div>
 		</div>
 	</body>

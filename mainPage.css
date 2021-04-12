@@ -1,6 +1,16 @@
+:root{
+    --btn-deep-blue:#4088fb;
+    --btn-light-blue:#4796e0;
+    --gray:#6B7E8D;
+    --blue:#4796e0;
+    --magenta:#A84165;
+    --magenta-light:#b8476f;
+}
+
 html{
     height:100%;
     width:100%;
+    transform:scale(1.2);
 }
 
 body {
@@ -12,12 +22,10 @@ body {
 	background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%), linear-gradient(to bottom,  rgba(57,173,219,.25) 0%,rgba(42,60,87,.4) 100%), linear-gradient(135deg,  #670d10 0%,#092756 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3E1D6D', endColorstr='#092756',GradientType=1 );
     font-family: 'Ubuntu', sans-serif;
-    
 }
+
 #container{
-    background-color: #FFFFFF;
-    width: 600px;
-    height: 750px;
+    background-color: white;
     margin: 7em auto;
     border-radius: 1.2em;
     box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.54);
@@ -27,99 +35,237 @@ body {
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
+#container>#createVote{
+    width: 600px;
+    height: 840px;
+}
+#container>#votingPage{
+    width: 500px;
+    height: 480px;
+}
 
 .header {
-    align-content: center;
+    text-align: center;
     color: #6b7e8d;
     font-family: 'Ubuntu', sans-serif;
     font-weight: bold;
     font-size: 30px;
     padding-top: 30px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 
-input[type=text], input[type=password] {
-    width: 76%;
+.subHeader {
+    text-align: left;
+    color: #231F20;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    padding-left:3rem;
+    margin-bottom: 5px;
+}
+#question~br~br~.subHeader{
+    margin-top: 2rem;
+}
+/* Affichage de Options: */
+#dispOption{
+    margin-bottom: -10px;
+}
+/* Affichage de Voters*/
+#addOption{
+    margin-bottom: -150px;
+}
+
+#owner, textarea{
     font-family: 'Ubuntu', sans-serif;
     background: rgb(236, 236, 236);
     color: rgb(133, 133, 133) !important;
-    font-weight: 300;
+    font-size: 14px;
+    letter-spacing: 1px;
+    border: none;
+}
+/*Text for organisateur*/
+#owner{
+    text-align: center;
+    
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 2px solid rgb(231, 231, 231);
+    
+    padding: 5px 10px;
+    margin-top:2px;
+    margin-bottom:2px;
+    margin-left: 70px;
+    width: 76%;
+}
+#voterID, #voteCode{
+    text-align: left;
+    border-radius: 5px;
+    border: 2px solid rgb(231, 231, 231);
+    
+    padding: 5px 5px;
+    margin-top:2px;
+    margin-bottom:2px;
+    margin-left: 50px;
+    width:50%;
+}
+#voteCode{
+    margin-left:14px;
+    width:10%;
+}
+
+textarea{
+    resize:none;
+    text-align: left;
+    letter-spacing: 1px;
+
+    padding: 10px 10px;
+    
+    margin-left:70px;
+    margin-top:-10px;
+    margin-bottom: -37px;
+    
+    border-radius: 5px;
+    border: 2px solid rgb(231, 231, 231);
+}
+textarea#questionID{
+    width:67%;
+    
+}
+
+.optionsListContainer{
+    margin-top: 10px;
+    overflow:auto;
+    height:140px;
+    margin-bottom:-20px;
+}
+/*text for adresse + procuration*/
+.caption{
+    text-align: left;
+    color: #231F20;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 200;
+    font-size: 15px;
+    padding-left:3rem;
+    margin-bottom: 10px;
+}
+#dispAdresse{
+    margin-left:24px;
+}
+#dispProcuration{
+    margin-left:310px;
+}
+.votersListContainer{
+    overflow: auto;
+    height:100px;
+}
+.voteOption, .voters{
+    font-family: 'Ubuntu', sans-serif;
+    color: rgb(133, 133, 133) !important;
     font-size: 14px;
     text-align: center;
     letter-spacing: 1px;
-    padding: 5px 20px;
+    background: rgb(236, 236, 236);
+    
+    box-sizing: border-box;
     border: none;
     border-radius: 5px;
-    outline: none;
-    box-sizing: border-box;
     border: 2px solid rgb(231, 231, 231);
-    margin-top: 5px;
-    margin-bottom:5px;
-    margin-left: 46px;
     
+    padding: 5px 10px;
+    margin-top:2px;
+    margin-bottom:2px;
+    margin-left: 70px;
+    width: 76%;
 }
 
-/* Full-width inputs 
-input[type=text], input[type=password] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-}
-
-
-input[type=submit] {
-    background-color: #53af57;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
+.submit {
     cursor: pointer;
-    width: 100%;
-}
-input[type=submit]:hover {
-    background-color: white;
-    color: #53af57;
-    border: 1px solid #53af57;
-}
-*/
+    color: white;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 13px;
+    border: 0;
+    border-radius: 5em;
+    background: linear-gradient(var(--btn-deep-blue), var(--btn-light-blue));
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    margin-top: 275px;
+    position: absolute;
+    top:50%;
+    left:50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 
-
-.logo{
-    width: 100px;
-    height: 40px;
+    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+}
+#inscription>.submit{
+    margin-top: 155px;
+}
+.submit:hover {
+    color:rgb(255, 255, 255);
+    background:linear-gradient(#3976d8,#3a7ab6);
 }
 
-.logo:hover{
-filter:drop-shadow(1px 1px 3px black);
+#voter.submit{
+    margin-top:170px;
 }
 
-button{
-    border: 1px solid rgb(0,0,0,0.3);
-    cursor:pointer;
-    background:#ddd;
-    transition-duration: 0.5s;
-}
-button:hover{
-    background:#fff;
-}
-.btnsOption{
-    width: 120px;
-    height: 40px;
-}
-/*
-table{
-    border-collapse:collapse;
-    border:1px solid #FF0000;
-}
-    
-table td{
-    border:1px solid #FF0000;
-}
-*/
+.btn-tools{
+    cursor: pointer;
+    color: white;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 12px;
+    border: 0;
+    border-radius: 5em;
+    background: linear-gradient(var(--magenta-light), var(--magenta));
 
-textarea{
-    resize: none;
+    padding:10px 12px;
+    margin-top:5px;
+    margin-left:14px;
+
+    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+}
+.btn-tools:hover{
+    color: white;
+    background: linear-gradient(var(--magenta), var(--magenta));
+}
+/* affichage des tools*/
+.toolsContainer{
+    margin-top:80px;
+}
+
+.exit {
+    background:none;
+    border:none;
+    padding:0!important;
+
+    cursor: pointer;
+    font-size: 13px;
+    font-family: 'Ubuntu', sans-serif;
+    color: rgb(81, 121, 195);
+    text-decoration: underline;
+    text-align: right;
+
+    margin-top: 380px;
+    position: absolute;
+    top:50%;
+    right:5%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.exit:hover {
+    color: rgb(131, 169, 240);
+}
+#votingPage>.exit{
+    margin-top:210px;
+}
+
+#OptionList{
+    overflow:auto;
+    height:70px;
+    margin-left:40%;
+}
+#chooseVoteContainer{
+    margin-top:10%;
 }
