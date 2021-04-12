@@ -251,7 +251,7 @@ textarea#questionID{
     background: linear-gradient(var(--magenta-light), var(--magenta));
 
     padding:10px 12px;
-    margin-top:5px;
+    margin-top:0%;
     margin-left:14px;
 
     box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
@@ -316,7 +316,7 @@ textarea#questionID{
 
 /* affichage des tools*/
 .toolsContainer{
-    margin-top:80px;
+    margin-top:13%;
 }
 
 #OptionList{
