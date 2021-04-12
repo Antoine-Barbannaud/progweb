@@ -1,13 +1,13 @@
 /* 
-1. Main
-2.Rectangle
-3.Typography
-4.Buttons
-5.Layout
-6.Error Handling
+    1. Main
+    2. Rectangle
+    3. Typography
+    4. Buttons
+    5. Layout
+    6. Error Handling
  
 ====================
-    Main
+    1. Main
 ====================
 */
 
@@ -21,7 +21,7 @@ body {
     background: -webkit-radial-gradient(0% 100%, ellipse cover, #973e5466 10%,#8a724c00 40%), linear-gradient(to bottom,  #39addb40 0%,#2a3c5766 100%), linear-gradient(135deg,  #860a0e 0%,#092756 100%);
     font-family: 'Ubuntu', sans-serif;
     background-size: 150%;
-    animation: bg-animation 15s infinite alternate;
+    animation: bg-animation 10s infinite alternate;
 }
 @keyframes bg-animation {
     0%{
@@ -34,7 +34,7 @@ body {
 
 /*  
 ====================
-    Rectangle
+    2. Rectangle
 ====================
 */
 
@@ -64,7 +64,7 @@ body {
 
 /*  
 ====================
-    Typography
+    3. Typography
 ====================
 */
 
@@ -110,7 +110,7 @@ input[type=text], input[type=password] {
 
 /*  
 ====================
-    Buttons
+    4. Buttons
 ====================
 */
 
@@ -197,7 +197,7 @@ input[type=text], input[type=password] {
 
 /*  
 ====================
-    Layout
+    5. Layout
 ====================
 */
 
@@ -236,7 +236,7 @@ input[type=text], input[type=password] {
 
 /*  
 ====================
-    Error Handling
+    6. Error Handling
 ====================
 */
 .incorrectLogin {

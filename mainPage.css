@@ -1,3 +1,15 @@
+/*
+    1. Main
+    2. Rectangle
+    3. Typography
+    4. Buttons
+    5. Layout
+
+====================
+    1. Main
+====================
+*/
+
 :root{
     --btn-deep-blue:#4088fb;
     --btn-light-blue:#4796e0;
@@ -10,19 +22,31 @@
 html{
     height:100%;
     width:100%;
-    transform:scale(1.2);
 }
 
 body {
     background: #092756;
-	background: -moz-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%),-moz-linear-gradient(top,  rgba(57,173,219,.25) 0%, rgba(42,60,87,.4) 100%), -moz-linear-gradient(-45deg,  #670d10 0%, #092756 100%);
-	background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%), -webkit-linear-gradient(top,  rgba(57,173,219,.25) 0%,rgba(42,60,87,.4) 100%), -webkit-linear-gradient(-45deg,  #670d10 0%,#092756 100%);
-	background: -o-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%), -o-linear-gradient(top,  rgba(57,173,219,.25) 0%,rgba(42,60,87,.4) 100%), -o-linear-gradient(-45deg,  #670d10 0%,#092756 100%);
-	background: -ms-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%), -ms-linear-gradient(top,  rgba(57,173,219,.25) 0%,rgba(42,60,87,.4) 100%), -ms-linear-gradient(-45deg,  #670d10 0%,#092756 100%);
-	background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%), linear-gradient(to bottom,  rgba(57,173,219,.25) 0%,rgba(42,60,87,.4) 100%), linear-gradient(135deg,  #670d10 0%,#092756 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3E1D6D', endColorstr='#092756',GradientType=1 );
+    background: -webkit-radial-gradient(0% 100%, ellipse cover, #973e5466 10%,#8a724c00 40%), linear-gradient(to bottom,  #39addb40 0%,#2a3c5766 100%), linear-gradient(135deg,  #860a0e 0%,#092756 100%);
     font-family: 'Ubuntu', sans-serif;
+    background-size: 150%;
+    animation: bg-animation 10s infinite alternate;
 }
+
+@keyframes bg-animation {
+    0%{
+        background-position: right;
+    }
+    100%{
+        background-position: left;
+    }
+}
+
+
+/*  
+====================
+    2. Rectangle
+====================
+*/
 
 #container{
     background-color: white;
@@ -35,23 +59,32 @@ body {
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
+
 #container>#createVote{
     width: 600px;
     height: 840px;
 }
+
 #container>#votingPage{
     width: 500px;
     height: 480px;
 }
+
+
+/*  
+====================
+    3. Typography
+====================
+*/
 
 .header {
     text-align: center;
     color: #6b7e8d;
     font-family: 'Ubuntu', sans-serif;
     font-weight: bold;
-    font-size: 30px;
-    padding-top: 30px;
-    margin-bottom: 30px;
+    font-size: 200%;
+    padding-top: 4%;
+    margin-bottom: 3%;
 }
 
 .subHeader {
@@ -59,20 +92,34 @@ body {
     color: #231F20;
     font-family: 'Ubuntu', sans-serif;
     font-weight: bold;
-    font-size: 15px;
-    padding-left:3rem;
-    margin-bottom: 5px;
+    font-size: 100%;
+    padding-left:12%;
+    margin-bottom: 1%;
 }
+
 #question~br~br~.subHeader{
-    margin-top: 2rem;
+    margin-top: 5%;
 }
+
 /* Affichage de Options: */
 #dispOption{
-    margin-bottom: -10px;
+    /*margin-bottom: -3%;*/
 }
+
 /* Affichage de Voters*/
 #addOption{
     margin-bottom: -150px;
+}
+
+/*text for adresse + procuration*/
+.caption{
+    text-align: left;
+    color: #231F20;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 200;
+    font-size: 15px;
+    padding-left:3rem;
+    margin-bottom: 10px;
 }
 
 #owner, textarea{
@@ -83,6 +130,45 @@ body {
     letter-spacing: 1px;
     border: none;
 }
+
+textarea{
+    resize:none;
+    text-align: left;
+    letter-spacing: 1px;
+
+    border-radius: 5px;
+    border: 2px solid rgb(231, 231, 231);
+
+    padding: 10px 10px;
+    margin-left:70px;
+    margin-top:-10px;
+    margin-bottom: -37px;
+    width:72%;
+}
+
+textarea#questionID{
+    width:67%;  
+}
+
+.voteOption, .voters{
+    font-family: 'Ubuntu', sans-serif;
+    color: rgb(133, 133, 133) !important;
+    font-size: 90%;
+    text-align: center;
+    letter-spacing: 1px;
+    background: rgb(236, 236, 236);
+    
+    box-sizing: border-box;
+    border: none;
+    border-radius: 5px;
+    border: 2px solid rgb(231, 231, 231);
+    
+    padding: 5px 10px;
+    margin-bottom:.5%;
+    margin-left: 12%;
+    width: 76%;
+}
+
 /*Text for organisateur*/
 #owner{
     text-align: center;
@@ -97,6 +183,7 @@ body {
     margin-left: 70px;
     width: 76%;
 }
+
 #voterID, #voteCode{
     text-align: left;
     border-radius: 5px;
@@ -108,75 +195,18 @@ body {
     margin-left: 50px;
     width:50%;
 }
+
 #voteCode{
     margin-left:14px;
     width:10%;
 }
 
-textarea{
-    resize:none;
-    text-align: left;
-    letter-spacing: 1px;
 
-    padding: 10px 10px;
-    
-    margin-left:70px;
-    margin-top:-10px;
-    margin-bottom: -37px;
-    
-    border-radius: 5px;
-    border: 2px solid rgb(231, 231, 231);
-}
-textarea#questionID{
-    width:67%;
-    
-}
-
-.optionsListContainer{
-    margin-top: 10px;
-    overflow:auto;
-    height:140px;
-    margin-bottom:-20px;
-}
-/*text for adresse + procuration*/
-.caption{
-    text-align: left;
-    color: #231F20;
-    font-family: 'Ubuntu', sans-serif;
-    font-weight: 200;
-    font-size: 15px;
-    padding-left:3rem;
-    margin-bottom: 10px;
-}
-#dispAdresse{
-    margin-left:24px;
-}
-#dispProcuration{
-    margin-left:310px;
-}
-.votersListContainer{
-    overflow: auto;
-    height:100px;
-}
-.voteOption, .voters{
-    font-family: 'Ubuntu', sans-serif;
-    color: rgb(133, 133, 133) !important;
-    font-size: 14px;
-    text-align: center;
-    letter-spacing: 1px;
-    background: rgb(236, 236, 236);
-    
-    box-sizing: border-box;
-    border: none;
-    border-radius: 5px;
-    border: 2px solid rgb(231, 231, 231);
-    
-    padding: 5px 10px;
-    margin-top:2px;
-    margin-bottom:2px;
-    margin-left: 70px;
-    width: 76%;
-}
+/*  
+====================
+    4. Buttons
+====================
+*/
 
 .submit {
     cursor: pointer;
@@ -230,10 +260,6 @@ textarea#questionID{
     color: white;
     background: linear-gradient(var(--magenta), var(--magenta));
 }
-/* affichage des tools*/
-.toolsContainer{
-    margin-top:80px;
-}
 
 .exit {
     background:none;
@@ -254,11 +280,43 @@ textarea#questionID{
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
+
 .exit:hover {
     color: rgb(131, 169, 240);
 }
+
 #votingPage>.exit{
     margin-top:210px;
+}
+
+
+/*  
+====================
+    5. Layout
+====================
+*/
+
+.optionsListContainer{
+    overflow:auto;
+    height:140px;
+}
+
+#dispAdresse{
+    margin-left:24px;
+}
+
+#dispProcuration{
+    margin-left:310px;
+}
+
+.votersListContainer{
+    overflow: auto;
+    height:100px;
+}
+
+/* affichage des tools*/
+.toolsContainer{
+    margin-top:80px;
 }
 
 #OptionList{
@@ -266,6 +324,7 @@ textarea#questionID{
     height:70px;
     margin-left:40%;
 }
+
 #chooseVoteContainer{
     margin-top:10%;
 }
