@@ -9,16 +9,16 @@ let test = "ok"
 function connexion(){
     let username = $("#utilisateur").val();
     let mdp = $("#mdp").val();
-    //console.log(username);
-    //console.log(mdp);
-    $.ajax({
+        $.ajax({
         method: "GET",
         url: "verification.php",
         data: {"username": username, "mdp": mdp }
         }).done(function(obj) {
             console.log(obj);
             if(obj == "yes"){
-                window.location.href = 'principale.php';	
+                $("#login").hide();
+                $("#userHome").show();
+                //window.location.href = 'principale.php';    
             }
           else {
             $("#erreur").css("display", "block");
