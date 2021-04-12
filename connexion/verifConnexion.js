@@ -3,6 +3,7 @@ script.src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'
 script.type = 'text/javascript';
 document.getElementsByTagName('head')[0].appendChild(script);
 
+let coOk = "no";
 
 function connexion(){
     let username = $("#utilisateur").val();
@@ -46,17 +47,22 @@ function ajoutUser(mdp){
 }
  
 function TestUtilisateur(){
-    let username = $("#utilisateur").val();
+    let username = $("#user").val();
+    console.log(username);
     $.ajax({
           method: "GET",
           dataType: "",
           url: "nom.php",
           data: {"username": username}
           }).done(function(obj) {
-            //console.log(obj);
             if(obj == "incorrect"){
               $("#duplicatedUsername").show();
             }
+            else{
+                $("#duplicatedUsername").hide();
+                coOk = "yes";
+            }
+
           }).fail(function(e){
             console.log(e);
             $("#message").html("<span class='ko'> Error: problème utilisateur</span>");
@@ -66,7 +72,7 @@ function TestUtilisateur(){
 function TestMdp(){
     let mdp1 = $("#mdp1").val();
     let mdp2 = $("#mdp2").val();
-    if(mdp1 == mdp2){
+    if(mdp1 == mdp2 && coOk == "yes"){
         ajoutUser(mdp1);
     }
     else {
