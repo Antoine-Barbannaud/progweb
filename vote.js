@@ -5,7 +5,8 @@ document.getElementsByTagName('head')[0].appendChild(script);
 
 var user = sessionStorage.getItem("username");
 var addid = 0;
-//console.log(user);
+var addproc = 1;
+var ballot = new Array(user);
 
 window.onload = function () {
 	document.getElementById("owner").value = user;
@@ -22,10 +23,10 @@ function addOption(){
     if(text != ""){
     	var addDiv = document.getElementById('newOption');
 	    var newDiv = document.createElement('div');
-	    newDiv.innerHTML += "<input type='text' id='additem_ "+ addid +"' class='voteOption' readonly size='55' value='"+ text + "'/> <button onclick='removeOption(this.parentNode)'>-</button>";
+	    newDiv.innerHTML += "<input type='text' id='additem_ "+ addid +"' class='voteOption' readonly size='55' value='"+ text + "'/> <button onclick='removeOption(this.parentNode)' class='btn-addRmv'>-</button>";
 	    addDiv.appendChild(newDiv);
 	    document.getElementById("adOption").value = "";
-
+	    addid++;
     }
     else {
     	document.getElementById("adOption").value = "veuillez renseigner une option";
@@ -42,10 +43,10 @@ function addVoter(){
     if(text != ""){
     	var addDiv = document.getElementById('newVoter');
 	    var newDiv = document.createElement('div');
-	    newDiv.innerHTML += "<input type='text' class='voters' readonly size='55' value='"+ text + "'/> <input onchange='addProcuration()' type='checkbox' class='procuration'> <button onclick='removeOption(this.parentNode)'>-</button> ";
+	    newDiv.innerHTML += "<input type='text' class='voters' readonly size='55' value='"+ text + "'/>  <div class='custom-select' style='display: inline-block;'><select id='pro_"+ addproc +"'><option value='0'>0</option><option value='1'>1</option> <option value='2'>2</option></select></div> <button onclick='removeOption(this.parentNode)' class='btn-addRmv'>-</button> ";
 	    addDiv.appendChild(newDiv);
 	    document.getElementById("adVoter").value = "";
-
+	    addproc++;
     }
     else {
     	document.getElementById("adVoter").value = "veuillez renseigner un voteur";
@@ -53,21 +54,33 @@ function addVoter(){
 }
 
 
-/*function createBallot(){
+function createBallot(){
 	var question = document.getElementById("question").value;
-	console.log(question);
+	ballot.push(question);
 	var x = document.getElementsByClassName("voteOption");
   	for (var i = 0; i < x.length-1; i++) {
-    	console.log(x[i].value);
+  		ballot.push(x[i].value);
   	} 
   	var voteur = document.getElementsByClassName("voters");
+  	var procuration = document.getElementsByClassName("custom-select");
   	for (var i = 0; i < voteur.length-1; i++) {
-    	console.log(voteur[i].value);
-  	}
-  	//var procuration = getSelectValue('proc');
-  	//console.log(procuration.option[procuration.selectedIndex].value);
+  		var proc =  document.getElementById("pro_"+i+"");
+  		var pro = proc.options[proc.selectedIndex].value;
+    	ballot.push(voteur[i].value);
+  		ballot.push(pro);
+  	}  		
+  	$.ajax({
+        method: "GET",
+        url: "php/createABallot.php",
+        data: {"ballot": ballot, "addid" : addid}
+        }).done(function(obj) {
+           console.log(obj);
+        }).fail(function(e){
+            console.log(e);
+            $("#message").html("<span class='ko'> Error: problème utilisateur</span>");
+        });  
 }
-**/	
+
 
 function validatePoll(){
     $("input").each(function(index, value){

@@ -19,8 +19,6 @@
         <div id="container">
             <div class="mainPage" id="createVote"  style="display: block;">
                 <p class="header">Creer un vote</p>
-
-
                     <p class="subHeader">Organisateur:</p>
                     <input type="text" id="owner" readonly="">
                     <br>
@@ -64,8 +62,8 @@
                     <div class="votersListContainer">
                         <div>
                             <input class="voters" id="ownerVoter" value="" readonly="">
-                            <div class="custom-select" id="proc" style="display: inline-block;">
-                                <select>
+                            <div class="custom-select" style="display: inline-block;">
+                                <select id="pro_0">
                                     <option value="0">0</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
@@ -80,7 +78,6 @@
                             <button class="btn-addRmv" onclick="addVoter()">+</button>
                         </div>
                     </div>
-                </form>
 
 
                 <button class="submit" onclick="createBallot()">Créer le scrutin</button>
