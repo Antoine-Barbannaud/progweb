@@ -20,7 +20,7 @@
             <div class="mainPage" id="createVote"  style="display: block;">
                 <p class="header">Creer un vote</p>
                 
-                <form onsubmit="return validatePoll()">
+    
                     <p class="subHeader">Organisateur:</p>
                     <input type="text" id="owner" readonly=""> 
                     <br>
@@ -50,7 +50,7 @@
                         </div>
                         <div>
                             <input type="text" id="adOption" class="voteOption" value="">
-                            <button type="button" onclick="addOption(this.parentNode)">+</button>
+                            <button type="button" onclick="addOption()">+</button>
                         </div>
                     </div>
                     
@@ -63,7 +63,7 @@
     
                     <div class="votersListContainer">
                         <div>
-                            <input class="voters" value="antoine.barbannaud" readonly="">
+                            <input id = "ownerVoter" class="voters" value="" readonly="">
                             <input onchange="addProcuration()" type="checkbox" class="procuration">
                             <button onclick="removeVoter(this.parentNode)">-</button>
                         </div>

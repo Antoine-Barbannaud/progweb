@@ -9,6 +9,7 @@ var addid = 0;
 
 window.onload = function () {
 	document.getElementById("owner").value = user;
+	document.getElementById("ownerVoter").value = user;
 }
 
 
@@ -16,14 +17,7 @@ function removeOption(Node){
     Node.parentNode.removeChild(Node);
 }
 
- function modifyOption(Node){
-    $("button").each(function(){
-        $(this).html("add");
-    });
-    
-}
-
-function addOption(Node){
+function addOption(){
     let text = document.getElementById("adOption").value;
     if(text != ""){
     	var addDiv = document.getElementById('newOption');
@@ -46,4 +40,54 @@ function validatePoll(){
 
 function hide(){ 
     $('#myID').toggle();
+}
+
+
+function addProcuration(){
+
+}
+
+
+function removeVoter(){
+
+}
+
+
+function addVoter(){
+
+}
+
+
+function createBallot(){
+
+}
+
+function voteMyself(){
+
+}
+
+function updateBallot(){
+
+}
+
+
+function closeBallot(){
+
+}
+
+
+function destroyBallot(){
+
+}
+
+function exitCreateBallot(){
+
+}
+
+function submitVote(){
+
+}
+
+function exitCreateBallot(){
+
 }
