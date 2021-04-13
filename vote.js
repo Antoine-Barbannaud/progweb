@@ -4,8 +4,8 @@ script.type = 'text/javascript';
 document.getElementsByTagName('head')[0].appendChild(script);
 
 var user = sessionStorage.getItem("username");
-
-console.log(user);
+var addid = 0;
+//console.log(user);
 
 window.onload = function () {
 	document.getElementById("owner").value = user;
@@ -24,18 +24,19 @@ function removeOption(Node){
 }
 
 function addOption(Node){
-    const div = document.createElement('div');
-    div.className = '1';
-    div.innerHTML = `
-        <input type="text" size="55" class="1" value="">
-        <button onclick="removeOption(this.parentNode)">suppr</button>
-    `;
-    Node.parentNode.appendChild(div);
+    let text = document.getElementById("adOption").value;
+    var addDiv = document.getElementById('newOption');
+    var newDiv = document.createElement('div');
+    newDiv.innerHTML += "<input type='text' id='additem_ "+ addid +"' class='voteOption' size='55' value='"+ text + "'/> <button onclick='removeOption(this.parentNode)'>-</button>";
+    addDiv.appendChild(newDiv);
+    document.getElementById("adOption").value = "";
+    //Node.parentNode.appendChild(addDiv);
+    //console.log( $("#additem_0").val());
 }
 
-function validate(){
+function validatePoll(){
     $("input").each(function(index, value){
-        console.log($(value).val());
+        //console.log($(value).val());
     });
 }
 
