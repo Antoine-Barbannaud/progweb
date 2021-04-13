@@ -64,19 +64,19 @@
                     <div class="votersListContainer">
                         <div>
                             <input class="voters" id="ownerVoter" value="" readonly="">
-                            <div class="custom-select" style="display: inline-block;">
+                            <div class="custom-select" id="proc" style="display: inline-block;">
                                 <select>
                                     <option value="0">0</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                 </select>
                             </div>
-                            <button class="btn-addRmv" onclick="removeVoter()">-</button>
+                            <button class="btn-addRmv" onclick="removeVoter(this.parentNode)">-</button>
                         </div>
                         <div id = "newVoter">
                         </div>
                         <div>
-                            <input class="voters" id="newvoter">
+                            <input type="text" class="voters" id="adVoter">
                             <button class="btn-addRmv" onclick="addVoter()">+</button>
                         </div>
                     </div>

@@ -53,7 +53,7 @@ function addVoter(){
 }
 
 
-function createBallot(){
+/*function createBallot(){
 	var question = document.getElementById("question").value;
 	console.log(question);
 	var x = document.getElementsByClassName("voteOption");
@@ -64,8 +64,10 @@ function createBallot(){
   	for (var i = 0; i < voteur.length-1; i++) {
     	console.log(voteur[i].value);
   	}
+  	//var procuration = getSelectValue('proc');
+  	//console.log(procuration.option[procuration.selectedIndex].value);
 }
-
+**/	
 
 function validatePoll(){
     $("input").each(function(index, value){
