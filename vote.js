@@ -52,6 +52,21 @@ function addVoter(){
     }
 }
 
+
+function createBallot(){
+	var question = document.getElementById("question").value;
+	console.log(question);
+	var x = document.getElementsByClassName("voteOption");
+  	for (var i = 0; i < x.length-1; i++) {
+    	console.log(x[i].value);
+  	} 
+  	var voteur = document.getElementsByClassName("voters");
+  	for (var i = 0; i < voteur.length-1; i++) {
+    	console.log(voteur[i].value);
+  	}
+}
+
+
 function validatePoll(){
     $("input").each(function(index, value){
         //console.log($(value).val());
@@ -68,11 +83,6 @@ function addProcuration(){
 }
 
 
-
-
-function createBallot(){
-
-}
 
 function voteMyself(){
 
