@@ -15,14 +15,14 @@
 
         </script>
     </head>
-     <body> 
+     <body>
         <div id="container">
             <div class="mainPage" id="createVote"  style="display: block;">
                 <p class="header">Creer un vote</p>
-                
-                <form onsubmit="return validatePoll()">
+
+
                     <p class="subHeader">Organisateur:</p>
-                    <input type="text" id="owner" readonly=""> 
+                    <input type="text" id="owner" readonly="">
                     <br>
                     <div id="test22" style="display:none;">
                     <p>tic!</p>
@@ -46,21 +46,21 @@
                             <input type="text" class="voteOption" value="Abstention" readOnly="">
                             <button class="btn-addRmv" onclick="removeOption(this.parentNode)">-</button>
                         </div>
-                        <div id = "newOption">   
+                        <div id = "newOption">
                         </div>
                         <div>
                             <input type="text" id="adOption" class="voteOption" value="">
-                            <button class="btn-addRmv" type="button" onclick="addOption(this.parentNode)">+</button>
+                            <button class="btn-addRmv" type="button" onclick="addOption()">+</button>
                         </div>
                     </div>
-                    
+
 
                     <p class="subHeader" id="dispVoters"><span id="voterCount">1</span> Voteurs</p>
                     <div>
                         <span id="dispAdresse" class="caption">Adresses</span>
                         <span id="dispProcuration" class="caption">Procuration</span>
                     </div>
-    
+
                     <div class="votersListContainer">
                         <div>
                             <input class="voters" value="antoine.barbannaud" readonly="">
@@ -71,25 +71,25 @@
                                     <option value="2">2</option>
                                 </select>
                             </div>
-                            <button class="btn-addRmv" onclick="removeVoter(this.parentNode)">-</button>
+                            <button class="btn-addRmv" onclick="removeVoter()">-</button>
                         </div>
-                        
-
+                        <div id = "newVoter">
+                        </div>
                         <div>
                             <input class="voters" id="newvoter">
-                            <button class="btn-addRmv" onclick="addVoter(this.parentNode)">+</button>
+                            <button class="btn-addRmv" onclick="addVoter()">+</button>
                         </div>
                     </div>
                 </form>
-                
-       
+
+
                 <button class="submit" onclick="createBallot()">Créer le scrutin</button>
                 <div class="toolsContainer">
                     <button class="btn-tools" onclick="voteMyself()" disabled="">Voter soi-même</button>
                     <button class="btn-tools" onclick="updateBallot()" disabled="">Voir statistiques du scrutin</button>
                     <button class="btn-tools" onclick="closeBallot()" disabled="">Fermer le scrutin</button>
                     <button class="btn-tools" onclick="destroyBallot()" disabled="">Supprimer le scrutin</button>
-                    
+
                 </div>
                 <button class="exit" onclick="exitCreateBallot()">Fermer</button>
 
@@ -102,12 +102,12 @@
                 <div style="display:inline-block; width:180px;"></div>
                 <span class="subHeader">Code du vote:</span>
                 <br>
-                <input id="voterID" value="antoine.barbannaud@universite-paris-saclay.fr" readonly=""> 
+                <input id="voterID" value="antoine.barbannaud@universite-paris-saclay.fr" readonly="">
                 <input id="voteCode" value="sD8dI" readonly="">
 
                 <p class="subHeader">Question:</p> <br>
                 <textarea id="questionID" readonly="">Pensez vous que...</textarea>
-               
+
                 <div id="chooseVoteContainer">
                     <p class="subHeader">Choisis ton option puis clique sur vote !</p>
                     <div id="OptionList">
@@ -116,11 +116,11 @@
                         <input type="radio" name="persvote" value="Yes/Oui">Yes/Oui</input> <br>
                     </div>
                 </div>
-                
-                <button class="submit" id="voter" onclick="submitVote()" disabled="">Voter</button> 
+
+                <button class="submit" id="voter" onclick="submitVote()" disabled="">Voter</button>
                 <button class="exit" onclick="exitCreateBallot()">Fermer</button>
             </div>
         </div>
-        
+
     </body>
 </html>

@@ -9,6 +9,7 @@ var addid = 0;
 
 window.onload = function () {
 	document.getElementById("owner").value = user;
+	document.getElementById("ownerVoter").value = user;
 }
 
 
@@ -16,14 +17,7 @@ function removeOption(Node){
     Node.parentNode.removeChild(Node);
 }
 
- function modifyOption(Node){
-    $("button").each(function(){
-        $(this).html("add");
-    });
-    
-}
-
-function addOption(Node){
+function addOption(){
     let text = document.getElementById("adOption").value;
     if(text != ""){
     	var addDiv = document.getElementById('newOption');
@@ -38,6 +32,26 @@ function addOption(Node){
     }
 }
 
+
+function removeVoter(Node){
+	Node.parentNode.removeChild(Node);
+}
+
+function addVoter(){
+	let text = document.getElementById("adVoter").value;
+    if(text != ""){
+    	var addDiv = document.getElementById('newVoter');
+	    var newDiv = document.createElement('div');
+	    newDiv.innerHTML += "<input type='text' class='voters' readonly size='55' value='"+ text + "'/> <input onchange='addProcuration()' type='checkbox' class='procuration'> <button onclick='removeOption(this.parentNode)'>-</button> ";
+	    addDiv.appendChild(newDiv);
+	    document.getElementById("adVoter").value = "";
+
+    }
+    else {
+    	document.getElementById("adVoter").value = "veuillez renseigner un voteur";
+    }
+}
+
 function validatePoll(){
     $("input").each(function(index, value){
         //console.log($(value).val());
@@ -46,4 +60,46 @@ function validatePoll(){
 
 function hide(){ 
     $('#myID').toggle();
+}
+
+
+function addProcuration(){
+
+}
+
+
+
+
+function createBallot(){
+
+}
+
+function voteMyself(){
+
+}
+
+function updateBallot(){
+
+}
+
+
+function closeBallot(){
+
+}
+
+
+function destroyBallot(){
+
+}
+
+function exitCreateBallot(){
+
+}
+
+function submitVote(){
+
+}
+
+function exitCreateBallot(){
+
 }
