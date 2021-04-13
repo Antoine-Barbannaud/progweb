@@ -101,11 +101,6 @@ body {
     margin-top: 5%;
 }
 
-/* Affichage de Options: */
-#dispOption{
-    /*margin-bottom: -3%;*/
-}
-
 /* Affichage de Voters*/
 #addOption{
     margin-bottom: -150px;
@@ -166,7 +161,10 @@ textarea#questionID{
     padding: 5px 10px;
     margin-bottom:.5%;
     margin-left: 12%;
-    width: 76%;
+    width: 75%;
+}
+.voters{
+    width:70%;
 }
 
 /*Text for organisateur*/
@@ -289,6 +287,24 @@ textarea#questionID{
     margin-top:210px;
 }
 
+.btn-addRmv{
+    cursor: pointer;
+    color: var(--magenta);
+    font-size: 1.2em;
+    border:none;
+    border-radius: .2em;
+    background: white;
+
+    padding: .1em .5em;
+    
+    box-shadow: 2px 2px 2px 1px #ebebeb;
+}
+
+.btn-addRmv:hover,
+.btn-addRmv:focus{
+    color:white;
+    background-color: #A84165;
+}
 
 /*  
 ====================
@@ -302,11 +318,11 @@ textarea#questionID{
 }
 
 #dispAdresse{
-    margin-left:24px;
+    margin-left:5%;
 }
 
 #dispProcuration{
-    margin-left:310px;
+    margin-left:290px;
 }
 
 .votersListContainer{

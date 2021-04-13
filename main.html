@@ -36,21 +36,21 @@
                     <div class="optionsListContainer">
                         <div>
                             <input type="text" class="voteOption" value="Yes" readOnly="">
-                            <button onclick="removeOption(this.parentNode)">-</button>
+                            <button class="btn-addRmv" onclick="removeOption(this.parentNode)">-</button>
                         </div>
                         <div>
                             <input type="text" class="voteOption" value="No" readOnly="">
-                            <button onclick="removeOption(this.parentNode)">-</button>
+                            <button class="btn-addRmv" onclick="removeOption(this.parentNode)">-</button>
                         </div>
                         <div>
                             <input type="text" class="voteOption" value="Abstention" readOnly="">
-                            <button onclick="removeOption(this.parentNode)">-</button>
+                            <button class="btn-addRmv" onclick="removeOption(this.parentNode)">-</button>
                         </div>
                         <div id = "newOption">   
                         </div>
                         <div>
                             <input type="text" id="adOption" class="voteOption" value="">
-                            <button type="button" onclick="addOption(this.parentNode)">+</button>
+                            <button class="btn-addRmv" type="button" onclick="addOption(this.parentNode)">+</button>
                         </div>
                     </div>
                     
@@ -64,21 +64,26 @@
                     <div class="votersListContainer">
                         <div>
                             <input class="voters" value="antoine.barbannaud" readonly="">
-                            <input onchange="addProcuration()" type="checkbox" class="procuration">
-                            <button onclick="removeVoter(this.parentNode)">-</button>
+                            <div class="custom-select" style="display: inline-block;">
+                                <select>
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                </select>
+                            </div>
+                            <button class="btn-addRmv" onclick="removeVoter(this.parentNode)">-</button>
                         </div>
                         
 
                         <div>
                             <input class="voters" id="newvoter">
-                            <button onclick="addVoter(this.parentNode)">+</button>
+                            <button class="btn-addRmv" onclick="addVoter(this.parentNode)">+</button>
                         </div>
                     </div>
                 </form>
                 
        
                 <button class="submit" onclick="createBallot()">Créer le scrutin</button>
-                <br>
                 <div class="toolsContainer">
                     <button class="btn-tools" onclick="voteMyself()" disabled="">Voter soi-même</button>
                     <button class="btn-tools" onclick="updateBallot()" disabled="">Voir statistiques du scrutin</button>
@@ -86,7 +91,6 @@
                     <button class="btn-tools" onclick="destroyBallot()" disabled="">Supprimer le scrutin</button>
                     
                 </div>
-                <br>
                 <button class="exit" onclick="exitCreateBallot()">Fermer</button>
 
             </div>
