@@ -27,7 +27,7 @@ function addOption(Node){
     let text = document.getElementById("adOption").value;
     var addDiv = document.getElementById('newOption');
     var newDiv = document.createElement('div');
-    newDiv.innerHTML += "<input type='text' id='additem_ "+ addid +"' class='voteOption' size='55' value='"+ text + "'/> <button onclick='removeOption(this.parentNode)'>-</button>";
+    newDiv.innerHTML += "<input type='text' id='additem_ "+ addid +"' class='voteOption' readonly size='55' value='"+ text + "'/> <button onclick='removeOption(this.parentNode)'>-</button>";
     addDiv.appendChild(newDiv);
     document.getElementById("adOption").value = "";
     //Node.parentNode.appendChild(addDiv);
