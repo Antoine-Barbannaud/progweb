@@ -67,11 +67,11 @@
                             <input onchange="addProcuration()" type="checkbox" class="procuration">
                             <button onclick="removeVoter(this.parentNode)">-</button>
                         </div>
-                        
-
+                        <div id = "newVoter">    
+                        </div>
                         <div>
-                            <input class="voters" id="newvoter">
-                            <button onclick="addVoter(this.parentNode)">+</button>
+                            <input type="text" id="adVoter" class="voters" id="newvoter">
+                            <button onclick="addVoter()">+</button>
                         </div>
                     </div>
                 </form>

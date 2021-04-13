@@ -32,6 +32,26 @@ function addOption(){
     }
 }
 
+
+function removeVoter(Node){
+	Node.parentNode.removeChild(Node);
+}
+
+function addVoter(){
+	let text = document.getElementById("adVoter").value;
+    if(text != ""){
+    	var addDiv = document.getElementById('newVoter');
+	    var newDiv = document.createElement('div');
+	    newDiv.innerHTML += "<input type='text' class='voters' readonly size='55' value='"+ text + "'/> <input onchange='addProcuration()' type='checkbox' class='procuration'> <button onclick='removeOption(this.parentNode)'>-</button> ";
+	    addDiv.appendChild(newDiv);
+	    document.getElementById("adVoter").value = "";
+
+    }
+    else {
+    	document.getElementById("adVoter").value = "veuillez renseigner un voteur";
+    }
+}
+
 function validatePoll(){
     $("input").each(function(index, value){
         //console.log($(value).val());
@@ -48,14 +68,6 @@ function addProcuration(){
 }
 
 
-function removeVoter(){
-
-}
-
-
-function addVoter(){
-
-}
 
 
 function createBallot(){
