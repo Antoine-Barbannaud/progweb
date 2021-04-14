@@ -169,8 +169,6 @@ function launchVoteFromHome(id){
            }
         }
       }
-      
-      //console.log(obj);
     }).fail(function(e){
       console.log(e);
       $("#message").html("<span class='ko'> Error: problème utilisateur</span>");
