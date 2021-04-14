@@ -107,8 +107,6 @@ function createVote(){
 }
 
 
-
-
 function listeScrutin(){
   let username = $("#utilisateur").val();
   console.log("ici");
@@ -178,4 +176,12 @@ function launchVoteFromHome(id){
       $("#message").html("<span class='ko'> Error: problème utilisateur</span>");
   }); 
   
+}
+function getRadioCheck(){
+  var btns = document.getElementsByClassName('radioBtn');
+  for(var i = 0; i < btns.length; i++){
+      if(btns[i].checked){
+          return btns[i].value;
+      }
+  }
 }

@@ -54,7 +54,7 @@
 					</div>
 					<button class="submit" onclick="createVote()">Créer un vote</button>
 				</div>
-			
+
 
 			<div class="mainPage" id="votingPage" style="display:none;">
                 <p class="header"> Page de vote </p>
@@ -71,9 +71,11 @@
 				</div>
 
                 <div id="chooseVoteContainer">
-                    <p class="smallHeader">Choisis ton option puis clique sur vote!</p>
+                    <p class="smallHeader">Choisis ton option puis clique sur vote !</p>
                     <div id="OptionList">
-                      
+                        <input class="radioBtn" type="radio" name="persvote" value="Abstention">Abstention <br>
+                        <input class="radioBtn" type="radio" name="persvote" value="No/Non">No/Non <br>
+                        <input class="radioBtn" type="radio" name="persvote" value="Yes/Oui">Yes/Oui <br>
                     </div>
                 </div>
                 <button class="submit" id="voter" onclick="submitVote()" disabled="">Voter</button>
