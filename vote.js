@@ -10,7 +10,7 @@ var ballot = new Array(user);
 var ownervote = 0;
 var nbOption = 3;
 var nbVoteur = 1;
-
+var idVote = "";
 
 window.onload = function () {
 	document.getElementById("owner").value = user;
@@ -92,7 +92,7 @@ function createBallot(){
         ownervote++;
       }
   	}  		
-    console.log(ballot);
+    //console.log(ballot);
   	$.ajax({
         method: "GET",
         dataType: "json",
@@ -100,6 +100,7 @@ function createBallot(){
         data: {"ballot": ballot, "nbOption" : nbOption, "nbVoteur" : nbVoteur}
         }).done(function(obj) {
            console.log(obj);
+           idVote = obj;
         }).fail(function(e){
             console.log(e);
             $("#message").html("<span class='ko'> Error: problème utilisateur</span>");
@@ -107,11 +108,38 @@ function createBallot(){
 }
 
 
-function validatePoll(){
-    $("input").each(function(index, value){
-        //console.log($(value).val());
+
+function closeBallot(){
+    $.ajax({
+      method: "GET",
+      dataType: "",
+      url: "php/closeVote.php",
+      data : {"idVote" : idVote}
+    }).done(function(obj){
+      console.log(obj);
+    }).fail(function(e){
+      console.log(e);
+      $("#message").html("<span class='ko'> Error: problème utilisateur</span>");
     });
 }
+
+
+function destroyBallot(){
+  console.log("coucou");
+    $.ajax({
+      method: "GET",
+      dataType: "",
+      url: "php/deleteDirectory.php",
+      data : {"idVote" : idVote}
+    }).done(function(obj){
+      console.log(obj);
+    }).fail(function(e){
+      console.log(e);
+      $("#message").html("<span class='ko'> Error: problème utilisateur</span>");
+    });
+}
+
+
 
 function hide(){ 
     $('#myID').toggle();
@@ -133,14 +161,9 @@ function updateBallot(){
 }
 
 
-function closeBallot(){
-
-}
 
 
-function destroyBallot(){
 
-}
 
 function exitCreateBallot(){
 

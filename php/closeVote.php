@@ -1,12 +1,13 @@
 <?php
-    function closeVote($file){
-        $jsonString = file_get_contents($file);
-        $data = json_decode($jsonString, true);
+$idVote = $_GET["idVote"];
 
-        $data[0][open] = false;
+$jsonString = file_get_contents("../json/ballots/".$idVote."/".$idVote.".json");
+$data = json_decode($jsonString, true);
 
-        $newJsonString = json_encode($data);
-        file_put_contents($file, $newJsonString);
-    }
-    
+$data["open"] = false;
+
+$newJsonString = json_encode($data, JSON_PRETTY_PRINT);
+file_put_contents("../json/ballots/".$idVote."/".$idVote.".json", $newJsonString);
+
+
 ?>

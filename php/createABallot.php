@@ -21,7 +21,8 @@ $result = array(
     "owner" => $ballot[0],
     "question" => $ballot[1],
     "options" => $option,
-    "voteurs" => $voteurs
+    "voteurs" => $voteurs,
+    "open" => "true"
 );
 
 $t = rand(1000,9999);
@@ -32,21 +33,22 @@ mkdir("../json/ballots/".$t);
 $JSONFILE = $t.".json";
 
 $fp = fopen("../json/ballots/".$t."/".$JSONFILE, 'w');
-fwrite($fp, "[");
 fwrite($fp, json_encode($result, JSON_PRETTY_PRINT));
-fwrite($fp, "]");
 fclose($fp);
 
 
 $json = "users.json";
-$ballott = array();
-array_push($ballott, array("ballot" => $t, "votant" => $nomVoteur));
+$ballott = array(
+	"ballot" => $t, 
+	"votant" => $nomVoteur
+);
 $fp = fopen("../json/ballots/".$json, 'a');
 $stat = fstat($fp);
 ftruncate($fp, $stat['size']-1);
 fwrite($fp, ",");
 fwrite($fp, json_encode($ballott, JSON_PRETTY_PRINT));
 fwrite($fp, "]");
+
 
 
 //$foundJsonString = json_encode($nomVoteur);
