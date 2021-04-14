@@ -37,24 +37,18 @@ fwrite($fp, json_encode($result, JSON_PRETTY_PRINT));
 fwrite($fp, "]");
 fclose($fp);
 
-$jsonString = file_get_contents('../json/users.json');
-$data = json_decode($jsonString, true);
 
-foreach ($data as $i=>$feature){
-	foreach($nomVoteur as $j=>$name)
-		if ($feature["name"] === $name){
-				array_push($feature["ballots"], array($t));
-		}
-	}
-}
-/*
-$fp = fopen("../json/ballots/".$JSONFILE, 'w');
+$json = "users.json";
+$ballott = array();
+array_push($ballott, array("ballot" => $t, "votant" => $nomVoteur));
+$fp = fopen("../json/ballots/".$json, 'a');
 $stat = fstat($fp);
 ftruncate($fp, $stat['size']-1);
 fwrite($fp, ",");
-fwrite($fp, json_encode($result, JSON_PRETTY_PRINT));
+fwrite($fp, json_encode($ballott, JSON_PRETTY_PRINT));
 fwrite($fp, "]");
-*/
+
+
 $foundJsonString = json_encode($nomVoteur);
 echo $foundJsonString;
 
