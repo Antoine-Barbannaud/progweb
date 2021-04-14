@@ -12,73 +12,71 @@
             if ( window.history.replaceState ) {
                  window.history.replaceState( null, null, window.location.href );
             }
-
         </script>
     </head>
      <body>
         <div id="container">
             <div class="mainPage" id="createVote"  style="display: block;">
                 <p class="header">Creer un vote</p>
-                    <p class="subHeader">Organisateur:</p>
-                    <input type="text" id="owner" readonly="">
-                    <br>
-                    <div id="test22" style="display:none;">
+                <p class="subHeader">Organisateur:</p>
+                <input type="text" id="owner" readonly="">
+                <br>
+                <div id="test22" style="display:none;">
                     <p>tic!</p>
-                     </div>
+                </div>
 
-                    <p class="subHeader">Question:</p><br>
-                    <textarea id="question" rows="3" cols="60">Etes vous d'accord pour ...</textarea>
-                    <br><br>
+                <p class="subHeader">Question:</p><br>
+                <textarea id="question" rows="3" cols="60">Etes vous d'accord pour ...</textarea>
+                <br><br>
 
-                    <p class="subHeader" id="dispOption">Options:</p><br>
-                    <div class="optionsListContainer">
-                        <div>
-                            <input type="text" id='additem_0'class="voteOption" value="Yes" readOnly="">
-                            <button class="btn-addRmv" onclick="removeOption(this.parentNode)">-</button>
-                        </div>
-                        <div>
-                            <input type="text" id='additem_2' class="voteOption" value="No" readOnly="">
-                            <button class="btn-addRmv" onclick="removeOption(this.parentNode)">-</button>
-                        </div>
-                        <div>
-                            <input type="text" id='additem_3'class="voteOption" value="Abstention" readOnly="">
-                            <button class="btn-addRmv" onclick="removeOption(this.parentNode)">-</button>
-                        </div>
-                        <div id = "newOption">
-                        </div>
-                        <div>
-                            <input type="text" id="adOption" class="voteOption" value="">
-                            <button class="btn-addRmv" type="button" onclick="addOption()">+</button>
-                        </div>
-                    </div>
-
-
-                    <p class="subHeader" id="dispVoters"><span id="voterCount">1</span> Voteurs</p>
+                <p class="subHeader" id="dispOption">Options:</p><br>
+                <div class="optionsListContainer">
                     <div>
-                        <span id="dispAdresse" class="caption">Adresses</span>
-                        <span id="dispProcuration" class="caption">Procuration</span>
+                        <input type="text" id="additem_0" class="voteOption" value="Yes" readonly="">
+                        <button class="btn-addRmv" onclick="removeOption(this.parentNode)">-</button>
                     </div>
-
-                    <div class="votersListContainer">
-                        <div>
-                            <input class="voters" id="ownerVoter" value="" readonly="">
-                            <div class="custom-select" style="display: inline-block;">
-                                <select id="pro_0">
-                                    <option value="0">0</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                </select>
-                            </div>
-                            <button class="btn-addRmv" onclick="removeVoter(this.parentNode)">-</button>
-                        </div>
-                        <div id = "newVoter">
-                        </div>
-                        <div>
-                            <input type="text" class="voters" id="adVoter">
-                            <button class="btn-addRmv" onclick="addVoter()">+</button>
-                        </div>
+                    <div>
+                        <input type="text" id="additem_2" class="voteOption" value="No" readonly="">
+                        <button class="btn-addRmv" onclick="removeOption(this.parentNode)">-</button>
                     </div>
+                    <div>
+                        <input type="text" id="additem_3" class="voteOption" value="Abstention" readonly="">
+                        <button class="btn-addRmv" onclick="removeOption(this.parentNode)">-</button>
+                    </div>
+                    <div id = "newOption">
+                    </div>
+                    <div>
+                        <input type="text" id="adOption" class="voteOption" value="">
+                        <button class="btn-addRmv" type="button" onclick="addOption()">+</button>
+                    </div>
+                </div>
 
+
+                <p class="subHeader" id="dispVoters"><span id="voterCount">1</span> Voteurs</p>
+                <div>
+                    <span id="dispAdresse" class="caption">Adresses</span>
+                    <span id="dispProcuration" class="caption">Procuration</span>
+                </div>
+
+                <div class="votersListContainer">
+                    <div>
+                        <input class="voters" id="ownerVoter" value="" readonly="">
+                        <div class="custom-select" style="display: inline-block;">
+                            <select id="pro_0">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                            </select>
+                        </div>
+                        <button class="btn-addRmv" onclick="removeVoter(this.parentNode)">-</button>
+                    </div>
+                    <div id = "newVoter">
+                    </div>
+                    <div>
+                        <input type="text" class="voters" id="adVoter">
+                        <button class="btn-addRmv" onclick="addVoter()">+</button>
+                    </div>
+                </div>
 
                 <button class="submit" onclick="createBallot()">Créer le scrutin</button>
                 <div class="toolsContainer">
@@ -88,7 +86,7 @@
                     <button class="btn-tools" onclick="destroyBallot()">Supprimer le scrutin</button>
 
                 </div>
-                <button class="exit" onclick="exitCreateBallot()">Fermer</button>
+                <button class="exit" onclick="window.location.href='connexion.html'">Fermer</button>
 
             </div>
 
@@ -108,14 +106,14 @@
                 <div id="chooseVoteContainer">
                     <p class="subHeader">Choisis ton option puis clique sur vote !</p>
                     <div id="OptionList">
-                        <input type="radio" name="persvote" value="Abstention">Abstention</input> <br>
-                        <input type="radio" name="persvote" value="No/Non">No/Non</input> <br>
-                        <input type="radio" name="persvote" value="Yes/Oui">Yes/Oui</input> <br>
+                        <input type="radio" name="persvote" value="Abstention">Abstention <br>
+                        <input type="radio" name="persvote" value="No/Non">No/Non <br>
+                        <input type="radio" name="persvote" value="Yes/Oui">Yes/Oui <br>
                     </div>
                 </div>
 
                 <button class="submit" id="voter" onclick="submitVote()" disabled="">Voter</button>
-                <button class="exit" onclick="exitCreateBallot()">Fermer</button>
+                <button class="exit" onclick="window.location.href='connexion.html'">Fermer</button>
             </div>
         </div>
 

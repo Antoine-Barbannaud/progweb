@@ -4,6 +4,7 @@
         "votant": [
             "alicia"
         ]
+<<<<<<< Updated upstream
     },
     {
         "ballot": 5839,
@@ -70,5 +71,7 @@
         "votant": [
             "alicia"
         ]
+=======
+>>>>>>> Stashed changes
     }
 ]

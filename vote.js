@@ -126,17 +126,17 @@ function closeBallot(){
 
 function destroyBallot(){
   console.log("coucou");
-    $.ajax({
-      method: "GET",
-      dataType: "",
-      url: "php/deleteDirectory.php",
-      data : {"idVote" : idVote}
-    }).done(function(obj){
-      console.log(obj);
-    }).fail(function(e){
-      console.log(e);
-      $("#message").html("<span class='ko'> Error: problème utilisateur</span>");
-    });
+  $.ajax({
+    method: "GET",
+    dataType: "",
+    url: "php/deleteDirectory.php",
+    data : {"idVote" : idVote}
+  }).done(function(obj){
+    console.log(obj);
+  }).fail(function(e){
+    console.log(e);
+    $("#message").html("<span class='ko'> Error: problème utilisateur</span>");
+  });
 }
 
 
