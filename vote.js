@@ -80,7 +80,7 @@ function createBallot(){
           }
           else{
             i = i - ownervote;
-            console.log(voteur[i].value)
+            console.log(voteur[i].value);
             ballot.push(voteur[i].value);
             i = i + ownervote;
             var proc =  document.getElementById("pro_"+i+"");
