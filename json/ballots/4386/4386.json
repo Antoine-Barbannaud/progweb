@@ -1,0 +1,25 @@
+{
+    "owner": "alicia",
+    "question": "Etes vous d'accord pour ...",
+    "options": [
+        {
+            "option0": "Yes",
+            "compte": 0
+        },
+        {
+            "option1": "No",
+            "compte": 0
+        },
+        {
+            "option2": "ba",
+            "compte": 0
+        }
+    ],
+    "voteurs": [
+        {
+            "voteurs0": "alicia",
+            "proc": "0"
+        }
+    ],
+    "open": "true"
+}

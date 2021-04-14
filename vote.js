@@ -11,6 +11,8 @@ var ownervote = 0;
 var nbOption = 3;
 var nbVoteur = 1;
 var idVote = "";
+var canIVote = false;
+var test = 0;
 
 window.onload = function () {
 	document.getElementById("owner").value = user;
@@ -92,7 +94,6 @@ function createBallot(){
         ownervote++;
       }
   	}  		
-    //console.log(ballot);
   	$.ajax({
         method: "GET",
         dataType: "json",
@@ -101,6 +102,8 @@ function createBallot(){
         }).done(function(obj) {
            console.log(obj);
            idVote = obj;
+           document.getElementById("myself").disabled = false;
+           document.getElementById("creation").disabled = true;
         }).fail(function(e){
             console.log(e);
             $("#message").html("<span class='ko'> Error: problème utilisateur</span>");
@@ -141,9 +144,43 @@ function destroyBallot(){
 
 
 
-function hide(){ 
-    $('#myID').toggle();
+function voteMyself(){
+    var t = 2+nbOption
+    for(var i = t; i < t*2; i++){
+      if(ballot[i] == user){
+         test = i;
+         $("#createVote").hide();
+        document.getElementById("voterID").value = user;
+        document.getElementById("voteCode").value = idVote;
+        document.getElementById("questionID").value = ballot[1];
+        for(var i = 2; i < nbOption+2; i++){
+          var addDiv = document.getElementById('OptionList');
+          var newDiv = document.createElement('div');
+          newDiv.innerHTML += "<input type='radio'name='persvote'  value='"+ ballot[i] + "'/> '"+ballot[i]+"'";
+          addDiv.appendChild(newDiv);
+          canIVote = true;
+        }
+        $("#votingPage").show();
+      }
+      i++;
+
+    } 
+    if(canIVote == false){
+        window.alert("vous ne pouvez pas voter à ce scrutin");
+    }   
 }
+
+
+
+
+function submitVote(){
+  if(ballot[test+1] == -1){
+    $("#createVote").show();
+    $("#votingPage").hide();
+    document.getElementById("myself").disabled = true;
+  }
+}
+
 
 
 function addProcuration(){
@@ -152,9 +189,7 @@ function addProcuration(){
 
 
 
-function voteMyself(){
 
-}
 
 function updateBallot(){
 
@@ -169,9 +204,7 @@ function exitCreateBallot(){
 
 }
 
-function submitVote(){
 
-}
 
 function exitCreateBallot(){
 

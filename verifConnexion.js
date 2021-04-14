@@ -5,7 +5,8 @@ document.getElementsByTagName('head')[0].appendChild(script);
 
 let coOk = "no";
 let test = "ok"
-let user = "";
+var scrutin;
+// $("#utilisateur").val();
 
 function connexion(){
     let username = $("#utilisateur").val();
@@ -17,10 +18,11 @@ function connexion(){
         }).done(function(obj) {
             //console.log(obj);
             if(obj == "yes"){
+                listeScrutin();
                 $("#login").hide();
                 $("#userHome").show();
                 user = username;
-                //window.location.href = 'principale.php';    
+                   
             }
           else {
             $("#erreur").css("display", "block");
@@ -101,9 +103,44 @@ function launchInscription(){
 function createVote(){
     window.location.href = 'main.html';  
     sessionStorage.setItem("username",user)  
-   //document.getElementById("owner").value = "trucmuche"; //set value on myInputID
+   
 }
 
+<<<<<<< Updated upstream
 function afficherVote(){
     
 }
+=======
+
+
+function listeScrutin(){
+  let username = $("#utilisateur").val();
+  console.log("ici");
+  $.ajax({
+    method: "GET",
+    dataType: "",
+    url: "php/scrutin.php",
+    data: {"username": username}
+    }).done(function(obj) {
+      //console.log(obj);
+      scrutin = obj;
+      ajoutScrutin();
+    }).fail(function(e){
+      console.log(e);
+      $("#message").html("<span class='ko'> Error: problème utilisateur</span>");
+  }); 
+} 
+
+
+
+function ajoutScrutin(){
+  console.log(scrutin);
+  for(var i = 0; i < scrutin.length; i++){
+    console.log(scrutin[i]);
+    /*var addDiv = document.getElementById('ballotListContainer');
+    var newDiv = document.createElement('div');
+    newDiv.innerHTML += "<button class='btn-vote-ID' onclick='launchVoteFromHome()''>'"+ scrutin[i] + "'</button> <br>";
+    addDiv.appendChild(newDiv);*/
+  }
+}
+>>>>>>> Stashed changes

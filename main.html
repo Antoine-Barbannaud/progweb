@@ -78,9 +78,9 @@
                     </div>
                 </div>
 
-                <button class="submit" onclick="createBallot()">Créer le scrutin</button>
+                <button id="creation" class="submit" onclick="createBallot()">Créer le scrutin</button>
                 <div class="toolsContainer">
-                    <button class="btn-tools" onclick="voteMyself()" disabled="">Voter soi-même</button>
+                    <button id = "myself" class="btn-tools" onclick="voteMyself()" disabled>Voter soi-même</button>
                     <button class="btn-tools" onclick="updateBallot()" disabled="">Voir statistiques du scrutin</button>
                     <button class="btn-tools" onclick="closeBallot()" disabled="">Fermer le scrutin</button>
                     <button class="btn-tools" onclick="destroyBallot()">Supprimer le scrutin</button>
@@ -97,22 +97,19 @@
                 <div style="display:inline-block; width:30%;"></div>
                 <span class="subHeader">Code du vote:</span>
                 <br>
-                <input id="voterID" value="antoine.barbannaud@universite-paris-saclay.fr" readonly="">
-                <input id="voteCode" value="sD8dI" readonly="">
+                <input id="voterID" value="" readonly="">
+                <input id="voteCode" value="" readonly="">
 
                 <p class="subHeader">Question:</p> <br>
-                <textarea id="questionID" readonly="">Pensez vous que...</textarea>
+                <textarea id="questionID" readonly=""></textarea>
 
                 <div id="chooseVoteContainer">
-                    <p class="subHeader">Choisis ton option puis clique sur vote !</p>
+                    <p class="subHeader">Choisis ton option puis clique sur voter !</p>
                     <div id="OptionList">
-                        <input type="radio" name="persvote" value="Abstention">Abstention <br>
-                        <input type="radio" name="persvote" value="No/Non">No/Non <br>
-                        <input type="radio" name="persvote" value="Yes/Oui">Yes/Oui <br>
                     </div>
                 </div>
 
-                <button class="submit" id="voter" onclick="submitVote()" disabled="">Voter</button>
+                <button class="submit" id="voter" onclick="submitVote()">Voter</button>
                 <button class="exit" onclick="window.location.href='connexion.html'">Fermer</button>
             </div>
         </div>
