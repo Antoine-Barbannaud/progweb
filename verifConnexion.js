@@ -98,11 +98,12 @@ function launchInscription(){
     $("#inscription").css("display", "block");
 }
 
-
-
 function createVote(){
     window.location.href = 'main.html';  
     sessionStorage.setItem("username",user)  
    //document.getElementById("owner").value = "trucmuche"; //set value on myInputID
 }
 
+function afficherVote(){
+    
+}

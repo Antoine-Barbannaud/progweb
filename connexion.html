@@ -36,7 +36,7 @@
 				<button class="submit" onclick="TestMdp()">S'inscrire</button>
 	
 			</div>
-			<div id="userHome" style="display:none">
+			<div id="userHome" style="display: none">
 				<div id="subHeaderPos">
 					<span class="subHeader" id="dispBallotVote">Votes disponibles</span>
 					<span class="subHeader" id="dispBallotManage">Votes a Gérer</span>
@@ -60,6 +60,32 @@
 				</div>
 				<button class="submit" onclick="createVote()">Créer un vote</button>
 			</div>
+
+			<div class="mainPage" id="votingPage" style="display:none;">
+                <p class="header"> Page de vote </p>
+
+                <span class="smallHeader">Voteur:</span>
+                <div style="display:inline-block; width:30%;"></div>
+                <span class="smallHeader">Code du vote:</span>
+                <input id="voterID" value="antoine.barbannaud@universite-paris-saclay.fr" readonly="">
+                <input id="voteCode" value="sD8dI" readonly="">
+
+				<div id="questionContainer">
+					<p class="smallHeader">Question:</p>
+					<textarea id="questionID" readonly="">Pensez vous que...</textarea>
+				</div>
+
+                <div id="chooseVoteContainer">
+                    <p class="smallHeader">Choisis ton option puis clique sur vote !</p>
+                    <div id="OptionList">
+                        <input type="radio" name="persvote" value="Abstention">Abstention <br>
+                        <input type="radio" name="persvote" value="No/Non">No/Non <br>
+                        <input type="radio" name="persvote" value="Yes/Oui">Yes/Oui <br>
+                    </div>
+                </div>
+                <button class="submit" id="voter" onclick="submitVote()" disabled="">Voter</button>
+                <button class="exit" onclick="window.location.href='connexion.html'">Fermer</button>
+            </div>
 		</div>
 	</body>
 	<footer>
