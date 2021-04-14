@@ -8,7 +8,7 @@ foreach ($data as $key => $value) {
 		$dat = $value["votant"];
 		foreach ($dat as $key => $val) {
 			if($val == $username){
-				array_push($result,  $truc["ballot"]);
+				array_push($result, array($truc["ballot"]);
 			}
 		}
 }

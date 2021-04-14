@@ -6,7 +6,8 @@ document.getElementsByTagName('head')[0].appendChild(script);
 let coOk = "no";
 let test = "ok"
 var scrutin;
-// $("#utilisateur").val();
+var vote;
+var proc = 0;
 
 function connexion(){
     let username = $("#utilisateur").val();
@@ -35,7 +36,6 @@ function connexion(){
 
 function ajoutUser(mdp){
     let username = $("#user").val();
-   // console.log(username);
         $.ajax({
         method: "GET",
         dataType: "",
@@ -106,11 +106,7 @@ function createVote(){
    
 }
 
-<<<<<<< Updated upstream
-function afficherVote(){
-    
-}
-=======
+
 
 
 function listeScrutin(){
@@ -118,11 +114,11 @@ function listeScrutin(){
   console.log("ici");
   $.ajax({
     method: "GET",
-    dataType: "",
+    dataType: "json",
     url: "php/scrutin.php",
     data: {"username": username}
     }).done(function(obj) {
-      //console.log(obj);
+      console.log("cuul")
       scrutin = obj;
       ajoutScrutin();
     }).fail(function(e){
@@ -137,10 +133,49 @@ function ajoutScrutin(){
   console.log(scrutin);
   for(var i = 0; i < scrutin.length; i++){
     console.log(scrutin[i]);
-    /*var addDiv = document.getElementById('ballotListContainer');
+    var addDiv = document.getElementById('ballotListContainer');
     var newDiv = document.createElement('div');
-    newDiv.innerHTML += "<button class='btn-vote-ID' onclick='launchVoteFromHome()''>'"+ scrutin[i] + "'</button> <br>";
-    addDiv.appendChild(newDiv);*/
+    newDiv.innerHTML += "<button class='btn-vote-ID' id='"+ scrutin[i] +"' onclick='launchVoteFromHome(id)'>"+ scrutin[i] + "</button> <br>";
+    addDiv.appendChild(newDiv);
   }
 }
->>>>>>> Stashed changes
+
+
+function launchVoteFromHome(id){
+  $("#userHome").hide();
+  $("#votingPage").show();
+   $.ajax({
+    method: "GET",
+    dataType: "json",
+    url: "php/findScrutin.php",
+    data: {"id": id}
+    }).done(function(obj) {
+      vote = obj;
+      if(vote["open"] == "true"){
+        document.getElementById("voterID").value = vote["owner"];
+        document.getElementById("voteCode").value = id;
+        document.getElementById("questionID").value = vote["question"];
+        //var i = 0;
+        for (options of vote["options"]){
+          var x = options["option"]
+          var addDiv = document.getElementById('OptionList');
+          var newDiv = document.createElement('div');
+          newDiv.innerHTML += "<input type='radio'name='persvote' value='"+ x + "'/> "+x+"";
+          addDiv.appendChild(newDiv);
+        }
+        for(voteurs of vote["voteurs"]){
+           var y = voteurs["voteurs"];
+           if(y == $("#utilisateur").val()){
+              proc = voteurs["proc"];
+              console.log(proc);
+           }
+        }
+      }
+      
+      //console.log(obj);
+    }).fail(function(e){
+      console.log(e);
+      $("#message").html("<span class='ko'> Error: problème utilisateur</span>");
+  }); 
+  
+}

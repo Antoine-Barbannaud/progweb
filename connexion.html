@@ -12,49 +12,49 @@
 
 	<body>
 		<div id="container">
-			<div id="login" style="display: block">
-				<p class="header" align="center">Connexion</p>
-				<input type="text" placeholder="Nom d'utilisateur" id="utilisateur"  name="truc" required>
-				<input type="password" placeholder="Mot de passe" id="mdp" name="password" required>
-				<button class="submit" onclick="connexion()">Se connecter</button> <br> <br> <br>
-				<div id="erreur" style="display: none;">
-					<p class="incorrectLogin">Nom d'utilisateur ou mot de passe incorrect!</p>
-				</div>
-				<button class="register" onclick="launchInscription()">S'inscrire</button>
-			</div>
-			<div id="inscription" style="display: none">
-				<p class="header" align="center">Inscription</p>
-				<input type="text" placeholder="Nom d'utilisateur" id="user" onchange="TestUtilisateur()" name="truc" required>
-				<input type="password" placeholder="Mot de passe" id="mdp1"  name="password" required>
-				<input type="password" placeholder="Verifiez le mot de passe" id="mdp2" name="password" required>
-				<div id="wrongPwd" style="display: none;">
-					<p class="incorrectLogin">Les deux mots de passe ne sont pas les mêmes !</p>
-				</div>
-				<div id="duplicatedUsername" style="display: none;">
-					<p class="incorrectLogin">Nom d'utilisateur déjà utilisé!</p>
-				</div>
-				<button class="submit" onclick="TestMdp()">S'inscrire</button>
-	
-			</div>
-			<div id="userHome" style="display: none">
-				<div id="subHeaderPos">
-					<span class="subHeader" id="dispBallotVote">Votes disponibles</span>
-					<span class="subHeader" id="dispBallotManage">Votes a Gérer</span>
-				</div>
-				<div id="wrapper">
-					<div id="ballotListContainer">
+				<div id="login" style="display: block">
+					<p class="header" align="center">Connexion</p>
+					<input type="text" placeholder="Nom d'utilisateur" id="utilisateur"  name="truc" required>
+					<input type="password" placeholder="Mot de passe" id="mdp" name="password" required>
+					<button class="submit" onclick="connexion()">Se connecter</button> <br> <br> <br>
+					<div id="erreur" style="display: none;">
+						<p class="incorrectLogin">Nom d'utilisateur ou mot de passe incorrect!</p>
 					</div>
-					<div class="vl"></div>
-					<div id="ballotManageContainer">
-						<button class="btn-manage-vote-ID" onclick="manageVoteFromHome()">94872</button> <br>
-						<button class="btn-manage-vote-ID" onclick="manageVoteFromHome()">48899</button> <br>
-						<button class="btn-manage-vote-ID" onclick="manageVoteFromHome()">12096</button> <br>
-						<button class="btn-manage-vote-ID" onclick="manageVoteFromHome()">98273</button> <br>
-						<button class="btn-manage-vote-ID" onclick="manageVoteFromHome()">32495</button> <br>
-					</div>
+					<button class="register" onclick="launchInscription()">S'inscrire</button>
 				</div>
-				<button class="submit" onclick="createVote()">Créer un vote</button>
-			</div>
+				<div id="inscription" style="display: none">
+					<p class="header" align="center">Inscription</p>
+					<input type="text" placeholder="Nom d'utilisateur" id="user" onchange="TestUtilisateur()" name="truc" required>
+					<input type="password" placeholder="Mot de passe" id="mdp1"  name="password" required>
+					<input type="password" placeholder="Verifiez le mot de passe" id="mdp2" name="password" required>
+					<div id="wrongPwd" style="display: none;">
+						<p class="incorrectLogin">Les deux mots de passe ne sont pas les mêmes !</p>
+					</div>
+					<div id="duplicatedUsername" style="display: none;">
+						<p class="incorrectLogin">Nom d'utilisateur déjà utilisé!</p>
+					</div>
+					<button class="submit" onclick="TestMdp()">S'inscrire</button>
+				</div>
+				<div id="userHome" style="display: none">
+					<div id="subHeaderPos">
+						<span class="subHeader" id="dispBallotVote">Votes disponibles</span>
+						<span class="subHeader" id="dispBallotManage">Votes a Gérer</span>
+					</div>
+					<div id="wrapper">
+						<div id="ballotListContainer">
+						</div>
+						<div class="vl"></div>
+						<div id="ballotManageContainer" style = "display : none">
+							<button class="btn-manage-vote-ID" onclick="manageVoteFromHome()">94872</button> <br>
+							<button class="btn-manage-vote-ID" onclick="manageVoteFromHome()">48899</button> <br>
+							<button class="btn-manage-vote-ID" onclick="manageVoteFromHome()">12096</button> <br>
+							<button class="btn-manage-vote-ID" onclick="manageVoteFromHome()">98273</button> <br>
+							<button class="btn-manage-vote-ID" onclick="manageVoteFromHome()">32495</button> <br>
+						</div>
+					</div>
+					<button class="submit" onclick="createVote()">Créer un vote</button>
+				</div>
+			
 
 			<div class="mainPage" id="votingPage" style="display:none;">
                 <p class="header"> Page de vote </p>
@@ -62,20 +62,18 @@
                 <span class="smallHeader">Voteur:</span>
                 <div style="display:inline-block; width:30%;"></div>
                 <span class="smallHeader">Code du vote:</span>
-                <input id="voterID" value="antoine.barbannaud@universite-paris-saclay.fr" readonly="">
+                <input id="voterID" value="" readonly="">
                 <input id="voteCode" value="sD8dI" readonly="">
 
 				<div id="questionContainer">
 					<p class="smallHeader">Question:</p>
-					<textarea id="questionID" readonly="">Pensez vous que...</textarea>
+					<textarea id="questionID" readonly=""></textarea>
 				</div>
 
                 <div id="chooseVoteContainer">
-                    <p class="smallHeader">Choisis ton option puis clique sur vote !</p>
+                    <p class="smallHeader">Choisis ton option puis clique sur vote!</p>
                     <div id="OptionList">
-                        <input type="radio" name="persvote" value="Abstention">Abstention <br>
-                        <input type="radio" name="persvote" value="No/Non">No/Non <br>
-                        <input type="radio" name="persvote" value="Yes/Oui">Yes/Oui <br>
+                      
                     </div>
                 </div>
                 <button class="submit" id="voter" onclick="submitVote()" disabled="">Voter</button>

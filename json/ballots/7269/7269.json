@@ -1,27 +1,27 @@
 {
-    "owner": "alicia",
-    "question": "Etes vous d'accord pour ...",
+    "owner": "nico",
+    "question": "Etes vous d'accord pour tuer Vernier ? ",
     "options": [
         {
-            "option0": "Yes",
+            "option": "Yes",
             "compte": 0
         },
         {
-            "option1": "No",
+            "option": "No",
             "compte": 0
         },
         {
-            "option2": "Abstention",
+            "option": "Abstention",
             "compte": 0
         }
     ],
     "voteurs": [
         {
-            "voteurs0": "alicia",
+            "voteurs": "nico",
             "proc": "0"
         },
         {
-            "voteurs2": "a",
+            "voteurs": "alicia",
             "proc": "0"
         }
     ],

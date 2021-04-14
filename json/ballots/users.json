@@ -1,32 +1,14 @@
 [
     {
-        "ballot": 9878,
+        "ballot": 1,
         "votant": [
-            "alicia"
+            "e"
         ]
     },
-    {
-        "ballot": 6396,
-        "votant": [
-            "asdasdadsadsads"
-        ]
-    },
-    {
-        "ballot": 3065,
-        "votant": [
-            "asdasdas"
-        ]
-    },
-    {
-        "ballot": 9215,
-        "votant": [
-            "",
-            "asasd"
-        ]
-    }
-,{
-    "ballot": 4695,
+{
+    "ballot": 7269,
     "votant": [
+        "nico",
         "alicia"
     ]
 }]

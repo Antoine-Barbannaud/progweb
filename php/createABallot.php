@@ -9,10 +9,10 @@ $voteurs = array();
 $users = array();
 
 for($i = 0; $i < $nbOption; $i++){
-	array_push($option, array("option".($i) => $ballot[$i+2], "compte" => 0));
+	array_push($option, array("option" => $ballot[$i+2], "compte" => 0));
 }
 for($i = 0; $i < $nbVoteur*2; $i++){
-	array_push($voteurs, array("voteurs".($i) => $ballot[$i+2+$nbOption],"proc" =>$ballot[$i+3+$nbOption]));
+	array_push($voteurs, array("voteurs" => $ballot[$i+2+$nbOption],"proc" =>$ballot[$i+3+$nbOption]));
 	array_push($nomVoteur,$ballot[$i+2+$nbOption]);
 	$i++;
 }
