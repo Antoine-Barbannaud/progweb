@@ -4,9 +4,13 @@ script.type = 'text/javascript';
 document.getElementsByTagName('head')[0].appendChild(script);
 
 var user = sessionStorage.getItem("username");
-var addid = 0;
+var addid = 3;
 var addproc = 1;
 var ballot = new Array(user);
+var ownervote = 0;
+var nbOption = 3;
+var nbVoteur = 1;
+
 
 window.onload = function () {
 	document.getElementById("owner").value = user;
@@ -16,6 +20,7 @@ window.onload = function () {
 
 function removeOption(Node){
     Node.parentNode.removeChild(Node);
+    nbOption--;
 }
 
 function addOption(){
@@ -23,10 +28,11 @@ function addOption(){
     if(text != ""){
     	var addDiv = document.getElementById('newOption');
 	    var newDiv = document.createElement('div');
-	    newDiv.innerHTML += "<input type='text' id='additem_ "+ addid +"' class='voteOption' readonly size='55' value='"+ text + "'/> <button onclick='removeOption(this.parentNode)' class='btn-addRmv'>-</button>";
+	    newDiv.innerHTML += "<input type='text' id='additem_"+ addid +"' class='voteOption' readonly size='55' value='"+ text + "'/> <button onclick='removeOption(this.parentNode)' class='btn-addRmv'>-</button>";
 	    addDiv.appendChild(newDiv);
 	    document.getElementById("adOption").value = "";
 	    addid++;
+      nbOption++;
     }
     else {
     	document.getElementById("adOption").value = "veuillez renseigner une option";
@@ -36,6 +42,7 @@ function addOption(){
 
 function removeVoter(Node){
 	Node.parentNode.removeChild(Node);
+  nbVoteur--;
 }
 
 function addVoter(){
@@ -47,6 +54,7 @@ function addVoter(){
 	    addDiv.appendChild(newDiv);
 	    document.getElementById("adVoter").value = "";
 	    addproc++;
+      nbVoteur++;
     }
     else {
     	document.getElementById("adVoter").value = "veuillez renseigner un voteur";
@@ -59,20 +67,38 @@ function createBallot(){
 	ballot.push(question);
 	var x = document.getElementsByClassName("voteOption");
   	for (var i = 0; i < x.length-1; i++) {
-  		ballot.push(x[i].value);
+  		  ballot.push(x[i].value);
   	} 
   	var voteur = document.getElementsByClassName("voters");
-  	var procuration = document.getElementsByClassName("custom-select");
-  	for (var i = 0; i < voteur.length-1; i++) {
-  		var proc =  document.getElementById("pro_"+i+"");
-  		var pro = proc.options[proc.selectedIndex].value;
-    	ballot.push(voteur[i].value);
-  		ballot.push(pro);
+  	//var procuration = document.getElementsByClassName("custom-select");
+  	for (var i = 0; i < addproc; i++) {
+      if(document.getElementById("pro_"+i+"") != null ){
+          if(ownervote == 0){
+            ballot.push(voteur[i].value);
+            var proc =  document.getElementById("pro_"+i+"");
+            var pro = proc.options[proc.selectedIndex].value;
+            ballot.push(pro);
+          }
+          else{
+            i = i - ownervote;
+            console.log(voteur[i].value)
+            ballot.push(voteur[i].value);
+            i = i + ownervote;
+            var proc =  document.getElementById("pro_"+i+"");
+            var pro = proc.options[proc.selectedIndex].value;
+            ballot.push(pro);
+         }
+      }
+      else {
+        ownervote++;
+      }
   	}  		
+    console.log(ballot);
   	$.ajax({
         method: "GET",
+        dataType: "json",
         url: "php/createABallot.php",
-        data: {"ballot": ballot, "addid" : addid}
+        data: {"ballot": ballot, "nbOption" : nbOption, "nbVoteur" : nbVoteur}
         }).done(function(obj) {
            console.log(obj);
         }).fail(function(e){
