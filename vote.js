@@ -122,7 +122,6 @@ function closeBallot(){
     }).done(function(obj){
       console.log(obj);
       document.getElementById("detruire").disabled = false;
-      //destroyBallot
     }).fail(function(e){
       console.log(e);
       $("#message").html("<span class='ko'> Error: problème utilisateur</span>");
@@ -131,7 +130,6 @@ function closeBallot(){
 
 
 function destroyBallot(){
-  console.log("coucou");
   $.ajax({
     method: "GET",
     dataType: "",
@@ -179,7 +177,7 @@ function voteMyself(){
 function submitVote(){
   $("#createVote").show();
   $("#votingPage").hide();
-  document.getElementById("fermerscrut").disabled = false;
+  document.getElementById("stat").disabled = false;
   document.getElementById("myself").disabled = true;
   var btns = document.getElementsByClassName('radioBtn');
   for(var i = 0; i < btns.length; i++){
@@ -201,30 +199,8 @@ function submitVote(){
 }
 
 
-
-function addProcuration(){
-
-}
-
-
-
-
-
 function updateBallot(){
+  document.getElementById("fermerscrut").disabled = false;
 
-}
-
-
-
-
-
-
-function exitCreateBallot(){
-
-}
-
-
-
-function exitCreateBallot(){
 
 }
