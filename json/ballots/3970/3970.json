@@ -1,0 +1,21 @@
+[{
+    "owner": "alicia",
+    "question": "Etes vous d'accord pour ...",
+    "options": [
+        {
+            "option0": "Yes"
+        },
+        {
+            "option1": "No"
+        },
+        {
+            "option2": "Abstention"
+        }
+    ],
+    "voteurs": [
+        {
+            "voteurs0": "alicia",
+            "proc": "0"
+        }
+    ]
+}]

@@ -70,7 +70,6 @@ function createBallot(){
   		  ballot.push(x[i].value);
   	} 
   	var voteur = document.getElementsByClassName("voters");
-  	//var procuration = document.getElementsByClassName("custom-select");
   	for (var i = 0; i < addproc; i++) {
       if(document.getElementById("pro_"+i+"") != null ){
           if(ownervote == 0){

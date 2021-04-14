@@ -1,20 +1,18 @@
 <?php
 
-$result = array();
-$option = array();
-$voteurs = array();
+$result = array(
+	    "owner" => 'tic',
+    "question" => 'tac'
+);
 
-for($i = 0; $i < 2 + 3; $i++){
-	array_push($option, array("option".($i) => "tic"));
+$i = rand(1000,9999);
+	while(is_dir("json/ballots/".$i) == true){
+		$i = rand(1000,9000);
 }
-
-array_push($voteurs, array("voteurs".(0) => "tci")); //, "proc" => "tac"));
-	
-
-array_push($result, array("owner"=> "tr", "question" => "r", "options"=> $option, "voteur" => $voteurs));
-
-
-//$foundJsonString = json_encode($result);
-//echo $foundJsonString;
-print_r($result);
+$dir = mkdir("json/ballots/".$i);
+$JSONFILE = $i.".json";
+print($dir);
+$fp = fopen($dir."/".$JSONFILE, 'w');
+fwrite($fp, json_encode($result, JSON_PRETTY_PRINT));
+fclose($fp);
 ?>
