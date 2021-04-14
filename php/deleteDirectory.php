@@ -13,31 +13,18 @@
 
     deleteDir("../json/ballots/".$idVote);
 
-<<<<<<< Updated upstream
 
-$jsonString = file_get_contents("../json/ballots/users.json");
-$data = json_decode($jsonString, true);
-
-
-foreach($data as $key => $value){
-	if ($value["ballot"] == $idVote){
-            unset($data[$key]);
-=======
     $jsonString = file_get_contents("../json/ballots/users.json");
     $data = json_decode($jsonString, true);
 
 
-    $data[0]["ballot"];
     foreach($data as $key => $value){
-        if ($value["ballot"] === $idVote){
-                unset($value);
+        if ($value["ballot"] == $idVote){
+                unset($data[$key]);
         }
->>>>>>> Stashed changes
     }
 
     $newJsonString = json_encode($data, JSON_PRETTY_PRINT);
     file_put_contents("../json/ballots/users.json", $newJsonString);
-
-
 
 ?>

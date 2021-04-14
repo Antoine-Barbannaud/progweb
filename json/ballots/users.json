@@ -4,74 +4,24 @@
         "votant": [
             "alicia"
         ]
-<<<<<<< Updated upstream
     },
     {
-        "ballot": 5839,
+        "ballot": 6396,
         "votant": [
-            "alicia"
+            "asdasdadsadsads"
         ]
     },
     {
-        "ballot": 7211,
+        "ballot": 3065,
         "votant": [
-            "alicia"
+            "asdasdas"
         ]
     },
     {
-        "ballot": 8167,
+        "ballot": 9215,
         "votant": [
-            "alicia"
+            "",
+            "asasd"
         ]
-    },
-    {
-        "ballot": 1460,
-        "votant": [
-            "alicia"
-        ]
-    },
-    {
-        "ballot": 8683,
-        "votant": [
-            "alicia"
-        ]
-    },
-    {
-        "ballot": 6742,
-        "votant": [
-            "alicia"
-        ]
-    },
-    {
-        "ballot": 7171,
-        "votant": [
-            "alicia"
-        ]
-    },
-    {
-        "ballot": 6357,
-        "votant": [
-            "alicia"
-        ]
-    },
-    {
-        "ballot": 7860,
-        "votant": [
-            "alicia"
-        ]
-    },
-    {
-        "ballot": 8685,
-        "votant": [
-            "alicia"
-        ]
-    },
-    {
-        "ballot": 7468,
-        "votant": [
-            "alicia"
-        ]
-=======
->>>>>>> Stashed changes
     }
 ]
