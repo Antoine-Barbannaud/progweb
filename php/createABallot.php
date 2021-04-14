@@ -49,7 +49,7 @@ fwrite($fp, json_encode($ballott, JSON_PRETTY_PRINT));
 fwrite($fp, "]");
 
 
-$foundJsonString = json_encode($nomVoteur);
-echo $foundJsonString;
+//$foundJsonString = json_encode($nomVoteur);
+echo $t;
 
 ?>
