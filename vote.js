@@ -13,6 +13,7 @@ var nbVoteur = 1;
 var idVote = "";
 var canIVote = false;
 var test = 0;
+var aVote = "";
 
 window.onload = function () {
 	document.getElementById("owner").value = user;
@@ -120,6 +121,8 @@ function closeBallot(){
       data : {"idVote" : idVote}
     }).done(function(obj){
       console.log(obj);
+      document.getElementById("detruire").disabled = false;
+      //destroyBallot
     }).fail(function(e){
       console.log(e);
       $("#message").html("<span class='ko'> Error: problème utilisateur</span>");
@@ -156,7 +159,7 @@ function voteMyself(){
         for(var i = 2; i < nbOption+2; i++){
           var addDiv = document.getElementById('OptionList');
           var newDiv = document.createElement('div');
-          newDiv.innerHTML += "<input type='radio'name='persvote'  value='"+ ballot[i] + "'/> '"+ballot[i]+"'";
+          newDiv.innerHTML += "<input class='radioBtn' type='radio'name='persvote'  value='"+ ballot[i] + "'/> '"+ballot[i]+"'";
           addDiv.appendChild(newDiv);
           canIVote = true;
         }
@@ -174,11 +177,27 @@ function voteMyself(){
 
 
 function submitVote(){
-  if(ballot[test+1] == -1){
-    $("#createVote").show();
-    $("#votingPage").hide();
-    document.getElementById("myself").disabled = true;
+  $("#createVote").show();
+  $("#votingPage").hide();
+  document.getElementById("fermerscrut").disabled = false;
+  document.getElementById("myself").disabled = true;
+  var btns = document.getElementsByClassName('radioBtn');
+  for(var i = 0; i < btns.length; i++){
+    if(btns[i].checked){
+      aVote = btns[i].value;
+      }
   }
+  $.ajax({
+    method: "GET",
+    dataType: "",
+    url: "php/ajoutVote.php",
+    data: {"aVote": aVote, "id" : idVote}
+    }).done(function(obj) {
+      console.log(obj);
+    }).fail(function(e){
+      console.log(e);
+      $("#message").html("<span class='ko'> Error: problème utilisateur</span>");
+  }); 
 }
 
 

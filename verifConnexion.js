@@ -8,6 +8,8 @@ let test = "ok"
 var scrutin;
 var vote;
 var proc = 0;
+var aVote = "";
+var theId;
 
 function connexion(){
     let username = $("#utilisateur").val();
@@ -140,8 +142,7 @@ function ajoutScrutin(){
 
 
 function launchVoteFromHome(id){
-  $("#userHome").hide();
-  $("#votingPage").show();
+  theId = id;
    $.ajax({
     method: "GET",
     dataType: "json",
@@ -150,6 +151,8 @@ function launchVoteFromHome(id){
     }).done(function(obj) {
       vote = obj;
       if(vote["open"] == "true"){
+          $("#userHome").hide();
+          $("#votingPage").show();
         document.getElementById("voterID").value = vote["owner"];
         document.getElementById("voteCode").value = id;
         document.getElementById("questionID").value = vote["question"];
@@ -158,7 +161,7 @@ function launchVoteFromHome(id){
           var x = options["option"]
           var addDiv = document.getElementById('OptionList');
           var newDiv = document.createElement('div');
-          newDiv.innerHTML += "<input type='radio'name='persvote' value='"+ x + "'/> "+x+"";
+          newDiv.innerHTML += "<input class='radioBtn' type='radio'name='persvote' value='"+ x + "'/> "+x+"";
           addDiv.appendChild(newDiv);
         }
         for(voteurs of vote["voteurs"]){
@@ -169,17 +172,32 @@ function launchVoteFromHome(id){
            }
         }
       }
+      else {
+        window.alert("ce scrutin a été fermé");
+      }
     }).fail(function(e){
       console.log(e);
       $("#message").html("<span class='ko'> Error: problème utilisateur</span>");
   }); 
   
 }
-function getRadioCheck(){
+function submitVote(){
   var btns = document.getElementsByClassName('radioBtn');
   for(var i = 0; i < btns.length; i++){
       if(btns[i].checked){
-          return btns[i].value;
+        aVote = btns[i].value;
       }
   }
+  $.ajax({
+    method: "GET",
+    dataType: "",
+    url: "php/ajoutVote.php",
+    data: {"aVote": aVote, "id" : theId}
+    }).done(function(obj) {
+      console.log(obj);
+    }).fail(function(e){
+      console.log(e);
+      $("#message").html("<span class='ko'> Error: problème utilisateur</span>");
+  }); 
+
 }

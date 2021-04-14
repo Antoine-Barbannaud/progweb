@@ -1,10 +1,10 @@
 {
-    "owner": "nico",
-    "question": "Etes vous d'accord pour tuer Vernier ? ",
+    "owner": "alicia",
+    "question": "Etes vous d'accord pour manger sushi?",
     "options": [
         {
             "option": "Yes",
-            "compte": 0
+            "compte": 1
         },
         {
             "option": "No",
@@ -17,13 +17,9 @@
     ],
     "voteurs": [
         {
-            "voteurs": "nico",
-            "proc": "0"
-        },
-        {
             "voteurs": "alicia",
             "proc": "0"
         }
     ],
-    "open": "true"
+    "open": false
 }
