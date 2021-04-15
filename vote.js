@@ -143,6 +143,8 @@ function destroyBallot(){
     url: "php/deleteDirectory.php",
     data : {"idVote" : idVote}
   }).done(function(obj){
+    document.getElementById("detruire").disabled = true;
+    document.getElementById("creation").disabled = false;
   }).fail(function(e){
     console.log(e);
     $("#message").html("<span class='ko'> Error: problème utilisateur</span>");
