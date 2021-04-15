@@ -15,6 +15,7 @@ var canIVote = false;
 var aVote = "";
 var result;
 var procOwner;
+var nbproc = 0;
 
 window.onload = function () {
 	document.getElementById("owner").value = user;
@@ -84,7 +85,7 @@ function createBallot(){
             if(voteur[i].value == user){
               procOwner = pro;
             }
-
+            nbproc++;
           }
           else{
             i = i - ownervote;
@@ -96,6 +97,7 @@ function createBallot(){
             if(voteur[i].value == user){
               procOwner = pro;
             }
+            nbproc++;
          }
       }
       else {
@@ -224,7 +226,7 @@ function updateBallot(){
     }).done(function(obj) {
       result = obj;
       for(option of result){
-        calc = (option["compte"] / nbVoteur) * 100 ;
+        calc = (option["compte"] / (nbVoteur+nbproc)) * 100 ;
         var addDiv = document.getElementById('showstat');
         var newDiv = document.createElement('div');
         newDiv.innerHTML += "<h>l'option "+ option['option']+" a reçu "+calc+"% des voix </h>";
