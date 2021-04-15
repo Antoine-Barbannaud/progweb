@@ -19,13 +19,11 @@ function connexion(){
         url: "php/verification.php",
         data: {"username": username, "mdp": mdp }
         }).done(function(obj) {
-            //console.log(obj);
             if(obj == "yes"){
                 listeScrutin();
                 $("#login").hide();
                 $("#userHome").show();
-                user = username;
-                   
+                user = username;  
             }
           else {
             $("#erreur").css("display", "block");
@@ -44,7 +42,6 @@ function ajoutUser(mdp){
         url: "php/ajoututilisateur.php",
         data: {"username": username, "mdp": mdp}
         }).done(function(obj) {
-            //console.log(obj);
             if(obj == "yes"){
                 window.location.href = 'connexion.html';    
             }
@@ -57,7 +54,6 @@ function ajoutUser(mdp){
 
 function TestUtilisateur(){
     let username = $("#user").val();
-    console.log(username);
     $.ajax({
           method: "GET",
           dataType: "",
@@ -81,14 +77,12 @@ function TestUtilisateur(){
   }
 
 function TestMdp(){
-    console.log("ici");
     let mdp1 = $("#mdp1").val();
     let mdp2 = $("#mdp2").val();
     if(mdp1 == mdp2 && coOk == "yes"){
         ajoutUser(mdp1);
     }
    else if(test == "no") {
-        //console.log(test);
         $("#wrongPwd").hide();
     }
     else {
@@ -111,7 +105,6 @@ function createVote(){
 
 function listeScrutin(){
   let username = $("#utilisateur").val();
-  console.log("ici");
   $.ajax({
     method: "GET",
     dataType: "json",
@@ -129,7 +122,6 @@ function listeScrutin(){
 
 
 function ajoutScrutin(){
-  console.log(scrutin);
   for(var i = 0; i < scrutin.length; i++){
     console.log(scrutin[i]);
     var addDiv = document.getElementById('ballotListContainer');

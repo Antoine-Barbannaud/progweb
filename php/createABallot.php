@@ -48,10 +48,6 @@ ftruncate($fp, $stat['size']-1);
 fwrite($fp, ",");
 fwrite($fp, json_encode($ballott, JSON_PRETTY_PRINT));
 fwrite($fp, "]");
-
-
-
-//$foundJsonString = json_encode($nomVoteur);
 echo $t;
 
 ?>

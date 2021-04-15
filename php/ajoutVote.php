@@ -15,6 +15,5 @@ foreach ($data["options"] as $key => $value) {
 $newJsonString = json_encode($data, JSON_PRETTY_PRINT);
 file_put_contents("../json/ballots/".$id."/".$id.".json", $newJsonString);
 
-print("cnczbxz");
 
 ?>
