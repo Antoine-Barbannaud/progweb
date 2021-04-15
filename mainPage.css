@@ -62,7 +62,7 @@ body {
 
 #container>#createVote{
     width: 600px;
-    height: 840px;
+    height: 880px;
 }
 
 #container>#votingPage{
@@ -241,7 +241,7 @@ textarea#questionID{
 #inscription>.submit{
     margin-top: 155px;
 }
-.submit:hover {
+.submit:hover{
     color:rgb(255, 255, 255);
     background:linear-gradient(#7599d3,#3a7ab6);
 }
@@ -264,7 +264,7 @@ textarea#questionID{
     background: linear-gradient(var(--magenta-light), var(--magenta));
 
     padding:10px 12px;
-    margin-top:0%;
+    margin-top:3%;
     margin-left:14px;
 
     box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
@@ -286,7 +286,7 @@ textarea#questionID{
     text-decoration: underline;
     text-align: right;
 
-    margin-top: 67%;
+    margin-top: 70%;
     position: absolute;
     top:50%;
     right:5%;
@@ -358,4 +358,9 @@ textarea#questionID{
 
 #chooseVoteContainer{
     margin-top:10%;
+}
+
+#showstat{
+    margin-top:2%;
+    margin-left:15%;
 }

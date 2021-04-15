@@ -76,7 +76,6 @@
                 </div>
 
                 <button id="creation" class="submit" onclick="createBallot()">Créer le scrutin</button>
-                <button id="modification" style="display:none;" class="submit" onclick="createBallot()" > Modifier le scrutin</button>
                 <div class="toolsContainer">
                     <button id = "myself" class="btn-tools" onclick="voteMyself()" disabled>Voter soi-même</button>
                     <button id="stat" class="btn-tools" onclick="updateBallot()" disabled>Voir statistiques du scrutin</button>
@@ -84,7 +83,6 @@
                     <button id="detruire" class="btn-tools" onclick="destroyBallot()" disabled>Supprimer le scrutin</button>
                 </div>
                 <div id = "showstat"> 
-                   
                 </div>
                 <button class="exit" onclick="window.location.href='connexion.html'">Fermer</button>
 
@@ -112,7 +110,7 @@
                 </div>
 
                 <button class="submit" id="voter" onclick="submitVote()">Voter</button>
-                <button class="exit" onclick="window.location.href='connexion.html'">Fermer</button>
+                <button class="exit" onclick="retourMainPage()">Fermer</button>
             </div>
         </div>
 
