@@ -88,7 +88,6 @@ function createBallot(){
           }
           else{
             i = i - ownervote;
-            console.log(voteur[i].value);
             ballot.push(voteur[i].value);
             i = i + ownervote;
             var proc =  document.getElementById("pro_"+i+"");
@@ -109,7 +108,6 @@ function createBallot(){
         url: "php/createABallot.php",
         data: {"ballot": ballot, "nbOption" : nbOption, "nbVoteur" : nbVoteur}
         }).done(function(obj) {
-           console.log(obj);
            idVote = obj;
            document.getElementById("myself").disabled = false;
            document.getElementById("creation").disabled = true;
@@ -128,7 +126,6 @@ function closeBallot(){
       url: "php/closeVote.php",
       data : {"idVote" : idVote}
     }).done(function(obj){
-      console.log(obj);
       document.getElementById("detruire").disabled = false;
     }).fail(function(e){
       console.log(e);
@@ -144,7 +141,6 @@ function destroyBallot(){
     url: "php/deleteDirectory.php",
     data : {"idVote" : idVote}
   }).done(function(obj){
-    console.log(obj);
   }).fail(function(e){
     console.log(e);
     $("#message").html("<span class='ko'> Error: problème utilisateur</span>");
@@ -204,7 +200,6 @@ function submitVote(){
     url: "php/ajoutVote.php",
     data: {"aVote": aVote, "id" : idVote}
     }).done(function(obj) {
-      console.log(obj);
     }).fail(function(e){
       console.log(e);
       $("#message").html("<span class='ko'> Error: problème utilisateur</span>");

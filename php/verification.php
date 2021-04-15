@@ -4,9 +4,6 @@
 	$jsonString = file_get_contents('../json/mdp.json');
 	$data = json_decode($jsonString, true);
 
-
-	//print("$username");
-
 	foreach ($data as $i => $truc) {
 		if ($truc["mail"] === $username && $truc["mdp"] === $mdp){
 			print("yes");
