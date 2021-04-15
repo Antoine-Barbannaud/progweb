@@ -156,7 +156,6 @@ function launchVoteFromHome(id){
         document.getElementById("voterID").value = vote["owner"];
         document.getElementById("voteCode").value = id;
         document.getElementById("questionID").value = vote["question"];
-        //var i = 0;
         for (options of vote["options"]){
           var x = options["option"]
           var addDiv = document.getElementById('OptionList');

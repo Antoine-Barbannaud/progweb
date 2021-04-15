@@ -122,7 +122,6 @@ function closeBallot(){
     }).done(function(obj){
       console.log(obj);
       document.getElementById("detruire").disabled = false;
-      //destroyBallot
     }).fail(function(e){
       console.log(e);
       $("#message").html("<span class='ko'> Error: problème utilisateur</span>");
@@ -131,7 +130,6 @@ function closeBallot(){
 
 
 function destroyBallot(){
-  console.log("coucou");
   $.ajax({
     method: "GET",
     dataType: "",
@@ -159,7 +157,7 @@ function voteMyself(){
         for(var i = 2; i < nbOption+2; i++){
           var addDiv = document.getElementById('OptionList');
           var newDiv = document.createElement('div');
-          newDiv.innerHTML += "<input class='radioBtn' type='radio'name='persvote'  value='"+ ballot[i] + "'/> '"+ballot[i]+"'";
+          newDiv.innerHTML += "<input class='radioBtn' type='radio' name='persvote' value='"+ ballot[i] + "'/> "+ballot[i]+"";
           addDiv.appendChild(newDiv);
           canIVote = true;
         }
@@ -179,12 +177,13 @@ function voteMyself(){
 function submitVote(){
   $("#createVote").show();
   $("#votingPage").hide();
-  document.getElementById("fermerscrut").disabled = false;
+  document.getElementById("stat").disabled = false;
   document.getElementById("myself").disabled = true;
   var btns = document.getElementsByClassName('radioBtn');
   for(var i = 0; i < btns.length; i++){
     if(btns[i].checked){
       aVote = btns[i].value;
+      console.log(aVote);
       }
   }
   $.ajax({
@@ -201,30 +200,18 @@ function submitVote(){
 }
 
 
-
-function addProcuration(){
-
-}
-
-
-
-
-
 function updateBallot(){
-
-}
-
-
-
-
-
-
-function exitCreateBallot(){
-
-}
-
-
-
-function exitCreateBallot(){
+  document.getElementById("fermerscrut").disabled = false;
+  $.ajax({
+    method: "GET",
+    dataType: "json",
+    url: "php/result.php",
+    data: {"id" : idVote}
+    }).done(function(obj) {
+      
+    }).fail(function(e){
+      console.log(e);
+      $("#message").html("<span class='ko'> Error: problème utilisateur</span>");
+  }); 
 
 }
