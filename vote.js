@@ -231,7 +231,7 @@ function updateBallot(){
         calc = (option["compte"] / (nbVoteur+nbproc)) * 100 ;
         var addDiv = document.getElementById('showstat');
         var newDiv = document.createElement('div');
-        newDiv.innerHTML += "<h>l'option "+ option['option']+" a reçu "+calc+"% des voix </h>";
+        newDiv.innerHTML += "<h>L'option "+ option['option']+" a reçu "+calc+"% des voix. </h>";
         addDiv.appendChild(newDiv);
           console.log(option["option"])
       } 
