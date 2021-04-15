@@ -164,7 +164,7 @@ function launchVoteFromHome(id){
         }
       }
       else {
-        window.alert("ce scrutin a été fermé");
+        window.alert("Ce scrutin a été fermé.");
       }
     }).fail(function(e){
       console.log(e);

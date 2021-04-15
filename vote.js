@@ -175,7 +175,7 @@ function voteMyself(){
 
     } 
     if(canIVote == false){
-        window.alert("vous ne pouvez pas voter à ce scrutin");
+        window.alert("Vous ne pouvez pas voter à ce scrutin");
     }   
 }
 
