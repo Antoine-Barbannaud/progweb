@@ -21,10 +21,6 @@
                 <p class="subHeader">Organisateur:</p>
                 <input type="text" id="owner" readonly="">
                 <br>
-                <div id="test22" style="display:none;">
-                    <p>tic!</p>
-                </div>
-
                 <p class="subHeader">Question:</p><br>
                 <textarea id="question" rows="3" cols="60">Etes vous d'accord pour ...</textarea>
                 <br><br>
@@ -86,7 +82,9 @@
                     <button id="stat" class="btn-tools" onclick="updateBallot()" disabled>Voir statistiques du scrutin</button>
                     <button id="fermerscrut" class="btn-tools" onclick="closeBallot()" disabled>Fermer le scrutin</button>
                     <button id="detruire" class="btn-tools" onclick="destroyBallot()" disabled>Supprimer le scrutin</button>
-
+                </div>
+                <div id = "showstat"> 
+                   
                 </div>
                 <button class="exit" onclick="window.location.href='connexion.html'">Fermer</button>
 

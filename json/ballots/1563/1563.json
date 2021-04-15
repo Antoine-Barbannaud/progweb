@@ -1,10 +1,10 @@
 {
     "owner": "alicia",
-    "question": "Etes vous d'accord pour manger sushi?",
+    "question": "Etes vous d'accord pour ...",
     "options": [
         {
             "option": "Yes",
-            "compte": 1
+            "compte": 0
         },
         {
             "option": "No",
@@ -18,8 +18,8 @@
     "voteurs": [
         {
             "voteurs": "alicia",
-            "proc": "0"
+            "proc": "1"
         }
     ],
-    "open": true
+    "open": "true"
 }

@@ -4,15 +4,8 @@
         "votant": [
             "e"
         ]
-    },
-    {
-        "ballot": 1207,
-        "votant": [
-            "alicia"
-        ]
-    }
-,{
-    "ballot": 8985,
+    },{
+    "ballot": 1563,
     "votant": [
         "alicia"
     ]
