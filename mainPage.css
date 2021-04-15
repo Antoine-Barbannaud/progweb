@@ -243,7 +243,11 @@ textarea#questionID{
 }
 .submit:hover {
     color:rgb(255, 255, 255);
-    background:linear-gradient(#3976d8,#3a7ab6);
+    background:linear-gradient(#7599d3,#3a7ab6);
+}
+.submit:disabled{
+    color:white;
+    background:linear-gradient(#8390a7,#798fa5);
 }
 
 #voter.submit{
