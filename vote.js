@@ -12,7 +12,6 @@ var nbOption = 3;
 var nbVoteur = 1;
 var idVote = "";
 var canIVote = false;
-var test = 0;
 var aVote = "";
 var result;
 var procOwner;
@@ -82,7 +81,7 @@ function createBallot(){
             var proc =  document.getElementById("pro_"+i+"");
             var pro = proc.options[proc.selectedIndex].value;
             ballot.push(pro);
-            if(voteur[i].value == owner){
+            if(voteur[i].value == user){
               procOwner = pro;
             }
 
@@ -95,7 +94,7 @@ function createBallot(){
             var proc =  document.getElementById("pro_"+i+"");
             var pro = proc.options[proc.selectedIndex].value;
             ballot.push(pro);
-            if(voteur[i].value == owner){
+            if(voteur[i].value == user){
               procOwner = pro;
             }
          }
@@ -158,7 +157,6 @@ function voteMyself(){
     var t = 2+nbOption
     for(var i = t; i < t*2; i++){
       if(ballot[i] == user){
-         test = i;
          $("#createVote").hide();
         document.getElementById("voterID").value = user;
         document.getElementById("voteCode").value = idVote;
@@ -185,10 +183,14 @@ function voteMyself(){
 
 
 function submitVote(){
-  $("#createVote").show();
-  $("#votingPage").hide();
-  document.getElementById("stat").disabled = false;
-  document.getElementById("myself").disabled = true;
+    procOwner--;
+  if(procOwner == -1){
+    document.getElementById("voteProcuration").value = procOwner;
+    document.getElementById("voter").disabled = true;
+  }
+  else{
+    document.getElementById("voteProcuration").value = procOwner; 
+  }
   var btns = document.getElementsByClassName('radioBtn');
   for(var i = 0; i < btns.length; i++){
     if(btns[i].checked){
@@ -209,6 +211,13 @@ function submitVote(){
   }); 
 }
 
+
+function retourMainPage(){
+  $("#createVote").show();
+  $("#votingPage").hide();
+  document.getElementById("stat").disabled = false;
+  document.getElementById("myself").disabled = true;
+}
 
 function updateBallot(){
   document.getElementById("fermerscrut").disabled = false;
