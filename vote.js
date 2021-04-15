@@ -30,7 +30,7 @@ function removeOption(Node){
 
 function addOption(){
     let text = document.getElementById("adOption").value;
-    if(text != ""){
+    if((text != "") && (text!="veuillez renseigner une option")){
     	var addDiv = document.getElementById('newOption');
 	    var newDiv = document.createElement('div');
 	    newDiv.innerHTML += "<input type='text' id='additem_"+ addid +"' class='voteOption' readonly size='55' value='"+ text + "'/> <button onclick='removeOption(this.parentNode)' class='btn-addRmv'>-</button>";
@@ -52,7 +52,7 @@ function removeVoter(Node){
 
 function addVoter(){
 	let text = document.getElementById("adVoter").value;
-    if(text != ""){
+    if((text != "") && (text!="veuillez renseigner un voteur")){
     	var addDiv = document.getElementById('newVoter');
 	    var newDiv = document.createElement('div');
 	    newDiv.innerHTML += "<input type='text' class='voters' readonly size='55' value='"+ text + "'/>  <div class='custom-select' style='display: inline-block;'><select id='pro_"+ addproc +"'><option value='0'>0</option><option value='1'>1</option> <option value='2'>2</option></select></div> <button onclick='removeOption(this.parentNode)' class='btn-addRmv'>-</button> ";
