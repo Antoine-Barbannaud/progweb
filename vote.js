@@ -12,8 +12,9 @@ var nbOption = 3;
 var nbVoteur = 1;
 var idVote = "";
 var canIVote = false;
-var test = 0;
 var aVote = "";
+var result;
+var procOwner;
 
 window.onload = function () {
 	document.getElementById("owner").value = user;
@@ -80,6 +81,10 @@ function createBallot(){
             var proc =  document.getElementById("pro_"+i+"");
             var pro = proc.options[proc.selectedIndex].value;
             ballot.push(pro);
+            if(voteur[i].value == user){
+              procOwner = pro;
+            }
+
           }
           else{
             i = i - ownervote;
@@ -89,6 +94,9 @@ function createBallot(){
             var proc =  document.getElementById("pro_"+i+"");
             var pro = proc.options[proc.selectedIndex].value;
             ballot.push(pro);
+            if(voteur[i].value == user){
+              procOwner = pro;
+            }
          }
       }
       else {
@@ -149,17 +157,17 @@ function voteMyself(){
     var t = 2+nbOption
     for(var i = t; i < t*2; i++){
       if(ballot[i] == user){
-         test = i;
          $("#createVote").hide();
         document.getElementById("voterID").value = user;
         document.getElementById("voteCode").value = idVote;
         document.getElementById("questionID").value = ballot[1];
-        for(var i = 2; i < nbOption+2; i++){
+        for(var j = 2; j < nbOption+2;j++){
           var addDiv = document.getElementById('OptionList');
           var newDiv = document.createElement('div');
-          newDiv.innerHTML += "<input class='radioBtn' type='radio' name='persvote' value='"+ ballot[i] + "'/> "+ballot[i]+"";
+          newDiv.innerHTML += "<input class='radioBtn' type='radio' name='persvote' value='"+ ballot[j] + "'/> "+ballot[j]+"";
           addDiv.appendChild(newDiv);
           canIVote = true;
+          document.getElementById("voteProcuration").value = procOwner;
         }
         $("#votingPage").show();
       }
@@ -175,10 +183,14 @@ function voteMyself(){
 
 
 function submitVote(){
-  $("#createVote").show();
-  $("#votingPage").hide();
-  document.getElementById("stat").disabled = false;
-  document.getElementById("myself").disabled = true;
+    procOwner--;
+  if(procOwner == -1){
+    document.getElementById("voteProcuration").value = procOwner;
+    document.getElementById("voter").disabled = true;
+  }
+  else{
+    document.getElementById("voteProcuration").value = procOwner; 
+  }
   var btns = document.getElementsByClassName('radioBtn');
   for(var i = 0; i < btns.length; i++){
     if(btns[i].checked){
@@ -200,6 +212,13 @@ function submitVote(){
 }
 
 
+function retourMainPage(){
+  $("#createVote").show();
+  $("#votingPage").hide();
+  document.getElementById("stat").disabled = false;
+  document.getElementById("myself").disabled = true;
+}
+
 function updateBallot(){
   document.getElementById("fermerscrut").disabled = false;
   $.ajax({
@@ -208,7 +227,15 @@ function updateBallot(){
     url: "php/result.php",
     data: {"id" : idVote}
     }).done(function(obj) {
-      
+      result = obj;
+      for(option of result){
+        calc = (option["compte"] / nbVoteur) * 100 ;
+        var addDiv = document.getElementById('showstat');
+        var newDiv = document.createElement('div');
+        newDiv.innerHTML += "<h>l'option "+ option['option']+" a reçu "+calc+"% des voix </h>";
+        addDiv.appendChild(newDiv);
+          console.log(option["option"])
+      } 
     }).fail(function(e){
       console.log(e);
       $("#message").html("<span class='ko'> Error: problème utilisateur</span>");

@@ -118,7 +118,6 @@ function listeScrutin(){
     url: "php/scrutin.php",
     data: {"username": username}
     }).done(function(obj) {
-      console.log("cuul")
       scrutin = obj;
       ajoutScrutin();
     }).fail(function(e){
@@ -151,8 +150,9 @@ function launchVoteFromHome(id){
     }).done(function(obj) {
       vote = obj;
       if(vote["open"] == "true"){
-          $("#userHome").hide();
-          $("#votingPage").show();
+        $("#userHome").hide();
+        $("#votingPage").show();
+        document.getElementById("voter").disabled = false;
         document.getElementById("voterID").value = vote["owner"];
         document.getElementById("voteCode").value = id;
         document.getElementById("questionID").value = vote["question"];
@@ -168,7 +168,6 @@ function launchVoteFromHome(id){
            if(y == $("#utilisateur").val()){
               proc = voteurs["proc"];
               document.getElementById("voteProcuration").value = proc;
-              console.log(proc);
            }
         }
       }
@@ -182,6 +181,14 @@ function launchVoteFromHome(id){
   
 }
 function submitVote(){
+  proc--;
+  if(proc == -1){
+    document.getElementById("voteProcuration").value = proc;
+    document.getElementById("voter").disabled = true;
+  }
+  else{
+    document.getElementById("voteProcuration").value = proc; 
+  }
   var btns = document.getElementsByClassName('radioBtn');
   for(var i = 0; i < btns.length; i++){
       if(btns[i].checked){
