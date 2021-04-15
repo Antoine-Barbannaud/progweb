@@ -344,3 +344,6 @@ textarea{
 #duplicatedUsername>.incorrectLogin{
     margin-top:110px;
 }
+#noPwd>.incorrectLogin{
+    margin-top:110px;
+}

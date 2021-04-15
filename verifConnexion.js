@@ -77,17 +77,25 @@ function TestUtilisateur(){
   }
 
 function TestMdp(){
+  console.log("go");
     let mdp1 = $("#mdp1").val();
     let mdp2 = $("#mdp2").val();
-    if(mdp1 == mdp2 && coOk == "yes"){
+    if(mdp1 == mdp2 && coOk == "yes" && mdp1 != "" ){
         ajoutUser(mdp1);
     }
    else if(test == "no") {
         $("#wrongPwd").hide();
+        $("#noPwd").hide();
     }
     else {
-        console.log(test);
-         $("#wrongPwd").show();
+        if(mdp1 == "" || mdp2 == ""){
+           $("#noPwd").show();
+           $("#wrongPwd").hide();
+        }
+        else{
+          $("#wrongPwd").show();
+           $("#noPwd").hide();
+        }
     }
 }
 

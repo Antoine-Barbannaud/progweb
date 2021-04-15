@@ -82,10 +82,10 @@ function createBallot(){
             var proc =  document.getElementById("pro_"+i+"");
             var pro = proc.options[proc.selectedIndex].value;
             ballot.push(pro);
+            nbproc += parseInt(pro);
             if(voteur[i].value == user){
               procOwner = pro;
             }
-            nbproc++;
           }
           else{
             i = i - ownervote;
@@ -94,10 +94,10 @@ function createBallot(){
             var proc =  document.getElementById("pro_"+i+"");
             var pro = proc.options[proc.selectedIndex].value;
             ballot.push(pro);
+            nbproc += parseInt(pro);
             if(voteur[i].value == user){
               procOwner = pro;
             }
-            nbproc++;
          }
       }
       else {
@@ -113,6 +113,7 @@ function createBallot(){
            idVote = obj;
            document.getElementById("myself").disabled = false;
            document.getElementById("creation").disabled = true;
+           console.log(idVote);
         }).fail(function(e){
             console.log(e);
             $("#message").html("<span class='ko'> Error: problème utilisateur</span>");
@@ -128,7 +129,7 @@ function closeBallot(){
       url: "php/closeVote.php",
       data : {"idVote" : idVote}
     }).done(function(obj){
-      document.getElementById("detruire").disabled = false;
+      document.getElementById("stat").disabled = false;
     }).fail(function(e){
       console.log(e);
       $("#message").html("<span class='ko'> Error: problème utilisateur</span>");
@@ -145,6 +146,14 @@ function destroyBallot(){
   }).done(function(obj){
     document.getElementById("detruire").disabled = true;
     document.getElementById("creation").disabled = false;
+    var x = document.getElementById("showstat");
+    for(var i = 0; i < nbOption; i++){
+      x.removeChild(x.childNodes[1]);
+    }
+    var y = document.getElementById("OptionList");
+    for(var i = 0; i < nbOption; i++){
+      y.removeChild(y.childNodes[1]);
+    }
   }).fail(function(e){
     console.log(e);
     $("#message").html("<span class='ko'> Error: problème utilisateur</span>");
@@ -183,7 +192,7 @@ function voteMyself(){
 
 
 function submitVote(){
-    procOwner--;
+  procOwner--;
   if(procOwner == -1){
     document.getElementById("voteProcuration").value = procOwner;
     document.getElementById("voter").disabled = true;
@@ -195,9 +204,10 @@ function submitVote(){
   for(var i = 0; i < btns.length; i++){
     if(btns[i].checked){
       aVote = btns[i].value;
-      console.log(aVote);
+
       }
   }
+  document.getElementById("fermerscrut").disabled = false;
   $.ajax({
     method: "GET",
     dataType: "",
@@ -214,12 +224,12 @@ function submitVote(){
 function retourMainPage(){
   $("#createVote").show();
   $("#votingPage").hide();
-  document.getElementById("stat").disabled = false;
+  
   document.getElementById("myself").disabled = true;
 }
 
 function updateBallot(){
-  document.getElementById("fermerscrut").disabled = false;
+  document.getElementById("detruire").disabled = false;
   $.ajax({
     method: "GET",
     dataType: "json",
@@ -228,12 +238,11 @@ function updateBallot(){
     }).done(function(obj) {
       result = obj;
       for(option of result){
-        calc = (option["compte"] / (nbVoteur+nbproc)) * 100 ;
-        var addDiv = document.getElementById('showstat');
+        calc = Math.round(((option["compte"] / (nbVoteur+nbproc)) * 100)) ;
         var newDiv = document.createElement('div');
-        newDiv.innerHTML += "<h>L'option "+ option['option']+" a reçu "+calc+"% des voix. </h>";
+        var addDiv = document.getElementById('showstat');
+        newDiv.innerHTML += "<h>l'option "+ option['option']+" a reçu "+calc+"% des voix </h>";
         addDiv.appendChild(newDiv);
-          console.log(option["option"])
       } 
     }).fail(function(e){
       console.log(e);
