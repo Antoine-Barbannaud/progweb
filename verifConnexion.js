@@ -168,6 +168,7 @@ function launchVoteFromHome(id){
            var y = voteurs["voteurs"];
            if(y == $("#utilisateur").val()){
               proc = voteurs["proc"];
+              document.getElementById("voteProcuration").value = proc;
               console.log(proc);
            }
         }

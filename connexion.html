@@ -36,34 +36,24 @@
 					<button class="submit" onclick="TestMdp()">S'inscrire</button>
 				</div>
 				<div id="userHome" style="display: none">
-					<div id="subHeaderPos">
-						<span class="subHeader" id="dispBallotVote">Votes disponibles</span>
-						<span class="subHeader" id="dispBallotManage">Votes a Gérer</span>
-					</div>
-					<div id="wrapper">
-						<div id="ballotListContainer">
-						</div>
-						<div class="vl"></div>
-						<div id="ballotManageContainer" style = "display : none">
-							<button class="btn-manage-vote-ID" onclick="manageVoteFromHome()">94872</button> <br>
-							<button class="btn-manage-vote-ID" onclick="manageVoteFromHome()">48899</button> <br>
-							<button class="btn-manage-vote-ID" onclick="manageVoteFromHome()">12096</button> <br>
-							<button class="btn-manage-vote-ID" onclick="manageVoteFromHome()">98273</button> <br>
-							<button class="btn-manage-vote-ID" onclick="manageVoteFromHome()">32495</button> <br>
-						</div>
+					<p class="subHeader" id="dispBallotVote">Votes disponibles</p>
+					<div id="ballotListContainer">
 					</div>
 					<button class="submit" onclick="createVote()">Créer un vote</button>
+					<button class="exit" onclick="window.location.href='connexion.html'">Fermer</button>
 				</div>
-
 
 			<div class="mainPage" id="votingPage" style="display:none;">
                 <p class="header"> Page de vote </p>
 
                 <span class="smallHeader">Voteur:</span>
-                <div style="display:inline-block; width:30%;"></div>
-                <span class="smallHeader">Code du vote:</span>
+                <div style="display:inline-block; width:16%;"></div>
+                <span id="voteSmallHeader" class="smallHeader">Code:</span>
+				<span id="procurationSmallHeader" class="smallHeader">Procuration:</span>
+
                 <input id="voterID" value="" readonly="">
                 <input id="voteCode" value="" readonly="">
+				<input id="voteProcuration" value="" readonly="">
 
 				<div id="questionContainer">
 					<p class="smallHeader">Question:</p>

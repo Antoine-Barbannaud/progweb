@@ -101,6 +101,13 @@ body {
     margin-top: 5%;
 }
 
+#voteSmallHeader.smallHeader{
+    padding-left:16%;
+}
+#procurationSmallHeader.smallHeader{
+    padding-left:9%;
+}
+
 /* Affichage de Voters*/
 #addOption{
     margin-bottom: -150px;
@@ -182,7 +189,7 @@ textarea#questionID{
     width: 76%;
 }
 
-#voterID, #voteCode{
+#voterID, #voteCode, #voteProcuration{
     text-align: left;
     border-radius: 5px;
     border: 2px solid rgb(231, 231, 231);
@@ -190,8 +197,8 @@ textarea#questionID{
     padding: 5px 5px;
     margin-top:2px;
     margin-bottom:2px;
-    margin-left: 50px;
-    width:50%;
+    margin-left: 60px;
+    width:40%;
 }
 
 #voteCode{
@@ -199,6 +206,10 @@ textarea#questionID{
     width:10%;
 }
 
+#voteProcuration{
+    margin-left:5%;
+    width:5%;
+}
 
 /*  
 ====================

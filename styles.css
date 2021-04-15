@@ -56,8 +56,8 @@ body {
 }
 
 #container>#userHome{
-    width:700px;
-    height:400px;
+    width:500px;
+    height:500px;
     transform:scale(1.2);
 }
 
@@ -104,6 +104,13 @@ body {
     margin-bottom: 1%;
 }
 
+#voteSmallHeader.smallHeader{
+    padding-left:16%;
+}
+#procurationSmallHeader.smallHeader{
+    padding-left:9%;
+}
+
 input[type=text], input[type=password] {
     width: 76%;
     background: rgb(236, 236, 236);
@@ -137,7 +144,7 @@ textarea{
     width:67%;
 }
 
-#voterID, #voteCode{
+#voterID, #voteCode, #voteProcuration{
     text-align: left;
     border-radius: 5px;
     border: 2px solid rgb(231, 231, 231);
@@ -146,13 +153,19 @@ textarea{
     margin-top:2px;
     margin-bottom:2px;
     margin-left: 50px;
-    width:50%;
+    width:40%;
 }
 
 #voteCode{
-    margin-left:1%;
+    margin-left:2%;
     width:10%;
 }
+
+#voteProcuration{
+    margin-left:5%;
+    width:5%;
+}
+
 /*  
 ====================
     4. Buttons
@@ -195,7 +208,7 @@ textarea{
 }
 
 #userHome>.submit{
-    margin-top: 110px;
+    margin-top: 30%;
 }
 
 .register {
@@ -242,8 +255,12 @@ textarea{
 .exit:hover {
     color: rgb(131, 169, 240);
 }
+#userHome>.exit{
+    margin-top:35%;
+    margin-right:5%
+}
 
-.btn-vote-ID, .btn-manage-vote-ID{
+.btn-vote-ID{
     cursor: pointer;
     color: #b8476f;
     font-size: 16px;
@@ -260,12 +277,9 @@ textarea{
     box-shadow: 2px 2px 2px 1px #ebebeb;
     transition: .2s;
 }
-.btn-vote-ID:hover, .btn-manage-vote-ID:hover{
+.btn-vote-ID:hover{
     color:white;
     background-color: #A84165;
-}
-.btn-manage-vote-ID{
-    margin-left: 0px;
 }
 
 
@@ -276,35 +290,20 @@ textarea{
 */
 
 #dispBallotVote.subHeader{
-    margin-left:80px;
+    margin-left:25%;
+    margin-bottom:-3%;
 }
-
-#dispBallotManage.subHeader{
-    margin-left:100px;
-}
-
 #subHeaderPos{
     margin-bottom:-30px;
     margin-top:100px;
 }
 
-#wrapper{
-    display:flex;
-}
 #ballotListContainer{
-    margin-top:9%;
-    flex: 0 0 43%;
-    margin-right:135px;
+    margin-top:10%;
+    margin-left:6%;
+    margin-right: 30%;
     overflow:auto;
-    height:200px;
-}
-#ballotManageContainer{
-    margin-top:9%;
-    margin-left:-22px;
-    margin-right:130px;
-    flex: 1;
-    overflow:auto;
-    height:200px;
+    height: 300px;
 }
 
 #OptionList{
@@ -340,19 +339,3 @@ textarea{
 #duplicatedUsername>.incorrectLogin{
     margin-top:110px;
 }
-
-
-/*  
-====================
-    GRAPHICAL ELEMENTS
-====================
-*/
-.vl {
-    border-left: 2px solid #e9e9e9;
-    height: 200px;
-    position: absolute;
-    margin-top:60px;
-    left: 50%;
-    margin-left: 0px;
-    top: 0;
-  }
