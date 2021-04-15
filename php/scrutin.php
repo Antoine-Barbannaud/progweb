@@ -12,8 +12,7 @@ foreach ($data as $key => $value) {
 			}
 		}
 }
-//print_r($result);
-//$result;
+
 $foundJsonString = json_encode($result);
 echo $foundJsonString;
 

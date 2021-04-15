@@ -157,7 +157,7 @@ function voteMyself(){
         for(var i = 2; i < nbOption+2; i++){
           var addDiv = document.getElementById('OptionList');
           var newDiv = document.createElement('div');
-          newDiv.innerHTML += "<input class='radioBtn' type='radio'name='persvote'  value='"+ ballot[i] + "'/> '"+ballot[i]+"'";
+          newDiv.innerHTML += "<input class='radioBtn' type='radio' name='persvote' value='"+ ballot[i] + "'/> "+ballot[i]+"";
           addDiv.appendChild(newDiv);
           canIVote = true;
         }
@@ -183,6 +183,7 @@ function submitVote(){
   for(var i = 0; i < btns.length; i++){
     if(btns[i].checked){
       aVote = btns[i].value;
+      console.log(aVote);
       }
   }
   $.ajax({
@@ -201,6 +202,16 @@ function submitVote(){
 
 function updateBallot(){
   document.getElementById("fermerscrut").disabled = false;
-
+  $.ajax({
+    method: "GET",
+    dataType: "json",
+    url: "php/result.php",
+    data: {"id" : idVote}
+    }).done(function(obj) {
+      
+    }).fail(function(e){
+      console.log(e);
+      $("#message").html("<span class='ko'> Error: problème utilisateur</span>");
+  }); 
 
 }
