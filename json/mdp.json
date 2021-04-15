@@ -1,8 +1,5 @@
 [
-	{
-		"mail": "charlotte.trupin@universite-paris-saclay.fr",
-	    "mdp" : "test"
-	},
+
 	{
 		"mail" : "a",
 		"mdp" : "a"
@@ -14,7 +11,4 @@
 },{
     "mail": "alicia",
     "mdp": "tac"
-},{
-    "mail": "ba",
-    "mdp": "tm"
 }]

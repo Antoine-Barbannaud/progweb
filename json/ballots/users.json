@@ -1,45 +1,7 @@
 [
     {
-        "ballot": 1,
+        "ballot": 0,
         "votant": [
-            "e"
+            ""
         ]
-    },
-    {
-        "ballot": 9452,
-        "votant": [
-            "alicia",
-            "Etes vous d'accord pour ..."
-        ]
-    },
-    {
-        "ballot": 2493,
-        "votant": [
-            "0"
-        ]
-    },
-    {
-        "ballot": 6031,
-        "votant": [
-            "alicia",
-            "a"
-        ]
-    },
-    {
-        "ballot": 7584,
-        "votant": [
-            "alicia"
-        ]
-    },
-    {
-        "ballot": 9517,
-        "votant": [
-            "alicia"
-        ]
-    }
-,{
-    "ballot": 2161,
-    "votant": [
-        "alicia"
-    ]
-}]
+    }]

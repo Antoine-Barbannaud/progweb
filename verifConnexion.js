@@ -131,7 +131,6 @@ function listeScrutin(){
 
 function ajoutScrutin(){
   for(var i = 0; i < scrutin.length; i++){
-    console.log(scrutin[i]);
     var addDiv = document.getElementById('ballotListContainer');
     var newDiv = document.createElement('div');
     newDiv.innerHTML += "<button class='btn-vote-ID' id='"+ scrutin[i] +"' onclick='launchVoteFromHome(id)'>"+ scrutin[i] + "</button> <br>";
@@ -150,25 +149,30 @@ function launchVoteFromHome(id){
     }).done(function(obj) {
       vote = obj;
       if(vote["open"] == "true"){
-        $("#userHome").hide();
-        $("#votingPage").show();
-        document.getElementById("voter").disabled = false;
-        document.getElementById("voterID").value = vote["owner"];
-        document.getElementById("voteCode").value = id;
-        document.getElementById("questionID").value = vote["question"];
-        for (options of vote["options"]){
-          var x = options["option"]
-          var addDiv = document.getElementById('OptionList');
-          var newDiv = document.createElement('div');
-          newDiv.innerHTML += "<input class='radioBtn' type='radio'name='persvote' value='"+ x + "'/> "+x+"";
-          addDiv.appendChild(newDiv);
-        }
         for(voteurs of vote["voteurs"]){
-           var y = voteurs["voteurs"];
-           if(y == $("#utilisateur").val()){
-              proc = voteurs["proc"];
-              document.getElementById("voteProcuration").value = proc;
-           }
+        var y = voteurs["voteurs"];
+         if(y == $("#utilisateur").val()){
+            proc = voteurs["proc"];
+         }
+        }
+        if(proc != -1){
+          $("#userHome").hide();
+          $("#votingPage").show();
+          document.getElementById("voteProcuration").value = proc;
+          document.getElementById("voter").disabled = false;
+          document.getElementById("voterID").value = vote["owner"];
+          document.getElementById("voteCode").value = id;
+          document.getElementById("questionID").value = vote["question"];
+          for (options of vote["options"]){
+            var x = options["option"]
+            var addDiv = document.getElementById('OptionList');
+            var newDiv = document.createElement('div');
+            newDiv.innerHTML += "<input class='radioBtn' type='radio'name='persvote' value='"+ x + "'/> "+x+"";
+            addDiv.appendChild(newDiv);
+          }
+        }
+        else{
+          window.alert("Vous ne pouvez plus voter.");
         }
       }
       else {
@@ -195,11 +199,12 @@ function submitVote(){
         aVote = btns[i].value;
       }
   }
+  let username = $("#utilisateur").val();
   $.ajax({
     method: "GET",
     dataType: "",
     url: "php/ajoutVote.php",
-    data: {"aVote": aVote, "id" : theId}
+    data: {"aVote": aVote, "id" : theId, "username" : username, "proc" : proc}
     }).done(function(obj) {
       console.log(obj);
     }).fail(function(e){
